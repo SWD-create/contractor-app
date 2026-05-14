@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛠協力業者管理システム</title>
+<link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
+<link rel="shortcut icon" type="image/png" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
+<link rel="apple-touch-icon" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
+<link rel="apple-touch-icon" sizes="180x180" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
+<link rel="apple-touch-icon" sizes="192x192" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
+<link rel="apple-touch-icon-precomposed" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="🛠協力業者管理システム">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="🛠協力業者管理システム">
+<meta name="theme-color" content="#0a1f24">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIuWNlOWKm+alreiAheeuoeeQhuOCt+OCueODhuODoCIsICJzaG9ydF9uYW1lIjogIuWNlOWKm+alreiAhSIsICJkZXNjcmlwdGlvbiI6ICLljZTlipvmpa3ogIXjga7mpJzntKLjg7vnmbvpjLLjg7voqZXkvqHnrqHnkIYiLCAic3RhcnRfdXJsIjogIi4vIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwYTFmMjQiLCAidGhlbWVfY29sb3IiOiAiIzBhMWYyNCIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsICJpY29ucyI6IFt7InNyYyI6ICJodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdGh1bWJuYWlsP2lkPTFBanI5Nk52ZjVBam1jMUdOQmk4NVRZQU5FYXpGU1lMVyZzej13NTEyIiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifSwgeyJzcmMiOiAiaHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL3RodW1ibmFpbD9pZD0xQWpyOTZOdmY1QWptYzFHTkJpODVUWUFORWF6RlNZTFcmc3o9dzUxMiIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55In0sIHsic3JjIjogImh0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS90aHVtYm5haWw/aWQ9MUFqcjk2TnZmNUFqbWMxR05CaTg1VFlBTkVhekZTWUxXJnN6PXc1MTIiLCAic2l6ZXMiOiAiMTgweDE4MCIsICJ0eXBlIjogImltYWdlL3BuZyJ9XX0=">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-base: #0a1f24; --bg-surface: #0f2a30; --bg-elev: #143840;
+    --bg-card: rgba(29, 158, 117, 0.06); --bg-card-hover: rgba(29, 158, 117, 0.12);
+    --border-soft: rgba(29, 158, 117, 0.18); --border-mid: rgba(29, 158, 117, 0.35); --border-strong: rgba(29, 158, 117, 0.6);
+    --text-primary: #e8f5f0; --text-secondary: #8ab8b0; --text-muted: #5a8a82;
+    --neon: #5dcaa5; --neon-bright: #7fe5c0; --neon-dim: rgba(93, 202, 165, 0.15);
+    --accent-amber: #ef9f27; --danger: #f09595; --danger-bg: rgba(240, 149, 149, 0.1); --warning: #efbf27;
+  }
+  html, body {
+    background: var(--bg-base); color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif;
+    font-size: 14px; line-height: 1.6; min-height: 100vh;
+  }
+  body {
+    background: radial-gradient(ellipse 800px 400px at top, rgba(29, 158, 117, 0.05), transparent), var(--bg-base);
+    padding: 16px;
+  }
+  .app-container { max-width: 1100px; margin: 0 auto; }
+
+  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .header-brand { display: flex; align-items: center; gap: 12px; }
+  .brand-icon { width: 42px; height: 42px; border-radius: 11px; background: #0f2a30; border: 0.5px solid var(--border-mid); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 18px rgba(93, 202, 165, 0.25); overflow: hidden; }
+  .brand-icon svg { display: block; }
+  .brand-text-main { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .brand-text-sub { font-size: 10px; color: var(--neon); letter-spacing: 1.5px; margin-top: 2px; display: flex; align-items: center; gap: 5px; }
+  .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 8px var(--neon); animation: pulse 2s infinite; }
+  .pulse-dot.offline { background: var(--danger); box-shadow: 0 0 8px var(--danger); }
+  .pulse-dot.syncing { background: var(--accent-amber); box-shadow: 0 0 8px var(--accent-amber); }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .nav-tabs { display: flex; gap: 3px; flex-wrap: wrap; }
+  .nav-tab { padding: 7px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; color: var(--text-secondary); background: transparent; border: none; display: inline-flex; align-items: center; gap: 5px; font-family: inherit; transition: all 0.15s; }
+  .nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
+  .nav-tab.active { background: var(--neon-dim); color: var(--neon-bright); border: 0.5px solid var(--border-mid); font-weight: 500; }
+
+  .btn { padding: 8px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: all 0.15s; white-space: nowrap; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-primary { background: var(--neon); color: #0a1f24; font-weight: 600; box-shadow: 0 0 12px rgba(93, 202, 165, 0.25); }
+  .btn-primary:hover:not(:disabled) { background: var(--neon-bright); }
+  .btn-ghost { background: transparent; color: var(--text-secondary); border: 0.5px solid var(--border-mid); }
+  .btn-ghost:hover:not(:disabled) { color: var(--text-primary); background: var(--bg-card); border-color: var(--neon); }
+  .btn-danger { background: transparent; color: var(--danger); border: 0.5px solid rgba(240, 149, 149, 0.3); }
+  .btn-danger:hover:not(:disabled) { background: var(--danger-bg); }
+
+  .card { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 12px; padding: 16px 18px; }
+  .card-inner { background: var(--bg-card); border-radius: 8px; padding: 10px 12px; }
+
+  input[type="text"], input[type="tel"], input[type="email"], input[type="date"], textarea, select {
+    width: 100%; padding: 9px 12px; background: var(--bg-base); border: 0.5px solid var(--border-soft); border-radius: 8px; color: var(--text-primary); font-size: 13px; font-family: inherit; transition: border-color 0.15s, background 0.15s;
+  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--neon); background: var(--bg-elev); }
+  select option { background: var(--bg-base); color: var(--text-primary); }
+  input[type="checkbox"] { width: auto; accent-color: var(--neon); cursor: pointer; }
+  textarea { resize: vertical; min-height: 60px; }
+
+  .field-row { margin-bottom: 12px; }
+  .field-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 5px; letter-spacing: 0.4px; display: flex; align-items: center; gap: 5px; }
+  .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .section-title { font-size: 10px; color: var(--neon); text-transform: uppercase; letter-spacing: 1.5px; margin: 20px 0 8px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+  .section-title::before { content: ""; width: 3px; height: 12px; background: var(--neon); border-radius: 2px; }
+
+  .chip { display: inline-flex; align-items: center; gap: 3px; padding: 4px 10px; border-radius: 999px; font-size: 11px; margin: 2px; border: 0.5px solid transparent; background: var(--bg-card); color: var(--text-secondary); }
+  .chip.q { background: rgba(93, 202, 165, 0.12); color: var(--neon); border-color: rgba(93, 202, 165, 0.25); }
+  .chip.w { background: rgba(127, 119, 221, 0.12); color: #afa9ec; border-color: rgba(127, 119, 221, 0.25); }
+  .chip.l { background: var(--neon-dim); color: var(--neon); border-color: var(--border-mid); }
+  .chip.muted { background: rgba(138, 184, 176, 0.1); color: var(--text-muted); }
+  .chip-btn { cursor: pointer; transition: all 0.15s; }
+  .chip-btn:hover { border-color: var(--neon); }
+  .chip-btn.selected { background: var(--neon); color: #0a1f24; border-color: var(--neon); font-weight: 500; }
+
+  .table-wrap { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 12px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 10px; color: var(--neon); font-weight: 500; padding: 12px; border-bottom: 0.5px solid var(--border-mid); letter-spacing: 0.8px; text-transform: uppercase; background: var(--bg-card); white-space: nowrap; }
+  td { padding: 12px; font-size: 13px; color: var(--text-primary); border-bottom: 0.5px solid var(--border-soft); }
+  tr:last-child td { border-bottom: none; }
+  tr.tr-click { cursor: pointer; transition: background 0.15s; }
+  tr.tr-click:hover td { background: var(--bg-card-hover); }
+
+  .row-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 10px; margin-bottom: 6px; cursor: pointer; transition: all 0.15s; }
+  .row-card:hover { border-color: var(--border-mid); background: var(--bg-elev); }
+  .avatar { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, var(--neon), #1d9e75); display: flex; align-items: center; justify-content: center; font-weight: 600; color: #0a1f24; font-size: 14px; flex-shrink: 0; }
+  .avatar.alt { background: linear-gradient(135deg, #7fe5c0, #1d9e75); }
+  .avatar.alt2 { background: linear-gradient(135deg, #5dcaa5, #0f6e56); }
+
+  .star-filled { color: var(--accent-amber); } .star-empty { color: rgba(138, 184, 176, 0.3); }
+  .stat-bar { height: 6px; background: var(--bg-base); border-radius: 999px; overflow: hidden; }
+  .stat-bar-fill { height: 100%; background: linear-gradient(90deg, var(--neon), var(--neon-bright)); border-radius: 999px; transition: width 0.3s; }
+  .review-card { background: var(--bg-card); border: 0.5px solid var(--border-soft); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
+
+  .modal-bg { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px; }
+  .modal-box { background: var(--bg-surface); border: 0.5px solid var(--border-mid); border-radius: 14px; padding: 22px; max-width: 480px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 0 40px rgba(0, 0, 0, 0.6); }
+
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--neon); color: #0a1f24; padding: 10px 20px; border-radius: 10px; font-size: 13px; font-weight: 500; z-index: 2000; box-shadow: 0 4px 20px rgba(93, 202, 165, 0.4); animation: slideUp 0.2s ease; }
+  .toast.error { background: var(--danger); }
+  .toast.warn { background: var(--accent-amber); }
+  @keyframes slideUp { from { transform: translate(-50%, 20px); opacity: 0; } }
+
+  .icon-btn { background: transparent; border: 0.5px solid var(--border-soft); width: 30px; height: 30px; border-radius: 7px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.15s; }
+  .icon-btn:hover:not(:disabled) { background: var(--bg-card); color: var(--neon); border-color: var(--neon); }
+  .icon-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .empty-state { text-align: center; padding: 40px 20px; color: var(--text-secondary); font-size: 13px; background: var(--bg-card); border-radius: 10px; }
+  .empty-state i { font-size: 32px; color: var(--text-muted); display: block; margin-bottom: 10px; }
+
+  .loading-overlay { position: fixed; inset: 0; background: rgba(10, 31, 36, 0.9); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 3000; flex-direction: column; gap: 16px; }
+  .loading-spinner { width: 40px; height: 40px; border: 3px solid var(--border-soft); border-top-color: var(--neon); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg-base); }
+  ::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 4px; }
+
+  @media (max-width: 600px) { body { padding: 10px; } .card { padding: 14px; } th, td { padding: 8px 6px; font-size: 11px; } }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+  <div class="header">
+    <div class="header-brand">
+      <div class="brand-icon">
+        <svg width="34" height="34" viewBox="0 0 120 120">
+          <path d="M 22 60 Q 22 22 60 22 Q 98 22 98 60 L 98 68 L 22 68 Z" fill="#5dcaa5"/>
+          <rect x="20" y="66" width="80" height="8" rx="2" fill="#1d9e75"/>
+          <path d="M 50 24 L 70 24 L 70 40 L 50 40 Z" fill="#0f2a30" fill-opacity="0.7"/>
+          <line x1="60" y1="22" x2="60" y2="68" stroke="#1d9e75" stroke-width="2" stroke-opacity="0.4"/>
+          <path d="M 34 76 Q 34 74 36 74 L 50 74 Q 52 74 52 76 L 52 82 L 34 82 Z" fill="#e8f5f0"/>
+          <path d="M 68 76 Q 68 74 70 74 L 84 74 Q 86 74 86 76 L 86 82 L 68 82 Z" fill="#e8f5f0"/>
+          <circle cx="43" cy="78" r="2" fill="#0f2a30"/>
+          <circle cx="77" cy="78" r="2" fill="#0f2a30"/>
+          <path d="M 50 94 Q 60 100 70 94" fill="none" stroke="#5dcaa5" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-text-main">協力業者管理システム</div>
+        <div class="brand-text-sub"><span class="pulse-dot" id="status-dot"></span><span id="header-stats">CONNECTING...</span></div>
+      </div>
+    </div>
+    <div class="nav-tabs" id="nav-tabs"></div>
+  </div>
+
+  <div id="main-view"></div>
+</div>
+
+<div id="modal-root"></div>
+<div id="loading-overlay" class="loading-overlay" style="display:none;">
+  <div class="loading-spinner"></div>
+  <div style="color: var(--text-secondary); font-size: 13px;" id="loading-text">読み込み中...</div>
+</div>
+
+<script>
+(function() {
+
+const api = {
+  load: () => callGAS('load'),
+  saveContractor: (contractor, clientVersion) => callGAS('saveContractor', { contractor, clientVersion }),
+  deleteContractor: (id) => callGAS('deleteContractor', { id }),
+  saveReview: (review) => callGAS('saveReview', { review }),
+  deleteReview: (id) => callGAS('deleteReview', { id }),
+  saveMasters: (masters) => callGAS('saveMasters', { masters }),
+  replaceAll: (data) => callGAS('replaceAll', { data })
+};
+
+// ============== API設定 ==============
+// ⚠️ ここにGASのウェブアプリURLを設定してください
+const API_URL = 'https://script.google.com/macros/s/AKfycbwm10F9y6JZojJWMoPtrJkdkmZk_YI2zv2xX7w-fJ4CltzMOsbHyDxEmE7XZGCbRL7X7A/exec';
+
+// JSONPでGETリクエスト (CORS回避)
+function jsonpGet(action) {
+  return new Promise((resolve, reject) => {
+    const callbackName = 'jsonp_cb_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+    const script = document.createElement('script');
+    let done = false;
+    const timeout = setTimeout(() => {
+      if (!done) {
+        done = true;
+        cleanup();
+        reject(new Error('リクエストがタイムアウトしました'));
+      }
+    }, 30000);
+    function cleanup() {
+      clearTimeout(timeout);
+      delete window[callbackName];
+      if (script.parentNode) script.parentNode.removeChild(script);
+    }
+    window[callbackName] = function(data) {
+      if (done) return;
+      done = true;
+      cleanup();
+      if (data && data.ok === false) reject(new Error(data.error || 'Unknown error'));
+      else resolve(data && data.data);
+    };
+    script.onerror = () => {
+      if (done) return;
+      done = true;
+      cleanup();
+      reject(new Error('ネットワークエラー'));
+    };
+    const sep = API_URL.indexOf('?') >= 0 ? '&' : '?';
+    script.src = API_URL + sep + 'action=' + encodeURIComponent(action) + '&callback=' + callbackName;
+    document.body.appendChild(script);
+  });
+}
+
+// POSTリクエスト (text/plainでpreflight回避)
+async function apiPost(body) {
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    redirect: 'follow',
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const json = await res.json();
+  if (json && json.ok === false) throw new Error(json.error || 'Unknown error');
+  return json && json.data;
+}
+
+function callGAS(action, params) {
+  setStatus('syncing');
+  const p = params || {};
+  let promise;
+  if (action === 'load') {
+    promise = jsonpGet('load');
+  } else {
+    promise = apiPost(Object.assign({ action: action }, p));
+  }
+  return promise
+    .then(result => { setStatus('online'); return result; })
+    .catch(err => { setStatus('offline'); throw err; });
+}
+
+function setStatus(s) {
+  const dot = document.getElementById('status-dot');
+  if (!dot) return;
+  dot.className = 'pulse-dot' + (s === 'offline' ? ' offline' : s === 'syncing' ? ' syncing' : '');
+}
+
+let state = { contractors: [], reviews: [], masters: { qualifications: [], workTypes: [], evaluationCategories: [], siteManagers: [] } };
+let currentView = 'list';
+let currentContractorId = null;
+let editingContractorId = null;
+let formData = null;
+let searchFilters = { name: '', contact: '', address: '', hasLicense: false, quals: [], works: [] };
+
+function uid(p) { return p + '_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function initials(name) { const p = (name || '?').trim().split(/\s+/); return p.length >= 2 ? (p[0][0] || '') + (p[1][0] || '') : (name || '?').slice(0, 1); }
+
+function avgScoreByCategory(contractorId) {
+  const rs = state.reviews.filter(r => r.contractorId === contractorId);
+  if (!rs.length) return null;
+  const out = {};
+  state.masters.evaluationCategories.forEach(cat => {
+    let sum = 0, n = 0;
+    rs.forEach(r => { if (r.scores[cat] != null) { sum += r.scores[cat]; n++; } });
+    if (n) out[cat] = sum / n;
+  });
+  return out;
+}
+function avgScore(contractorId) {
+  const c = avgScoreByCategory(contractorId);
+  if (!c) return null;
+  const v = Object.values(c);
+  return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
+}
+function reviewCount(id) { return state.reviews.filter(r => r.contractorId === id).length; }
+function stars(n) {
+  const f = Math.round(Number(n));
+  let h = '';
+  for (let i = 1; i <= 5; i++) h += `<i class="ti ti-star ${i <= f ? 'star-filled' : 'star-empty'}" style="font-size:13px;"></i>`;
+  return h;
+}
+
+function toast(msg, type) {
+  document.querySelectorAll('.toast').forEach(t => t.remove());
+  const t = document.createElement('div');
+  t.className = 'toast' + (type ? ' ' + type : '');
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2500);
+}
+
+function showModal(html) {
+  const root = document.getElementById('modal-root');
+  root.innerHTML = `<div class="modal-bg" id="modal-bg"><div class="modal-box" onclick="event.stopPropagation()">${html}</div></div>`;
+  document.getElementById('modal-bg').addEventListener('click', closeModal);
+}
+function closeModal() { document.getElementById('modal-root').innerHTML = ''; }
+window.closeModal = closeModal;
+
+function showLoading(text) {
+  document.getElementById('loading-text').textContent = text || '読み込み中...';
+  document.getElementById('loading-overlay').style.display = 'flex';
+}
+function hideLoading() { document.getElementById('loading-overlay').style.display = 'none'; }
+
+async function refreshData() {
+  try {
+    const data = await api.load();
+    state.contractors = data.contractors || [];
+    state.reviews = data.reviews || [];
+    state.masters = data.masters || state.masters;
+    return true;
+  } catch (e) {
+    toast('データの取得に失敗しました: ' + e.message, 'error');
+    return false;
+  }
+}
+
+function renderNav() {
+  document.getElementById('header-stats').textContent = `${state.contractors.length} COMPANIES / ${state.reviews.length} REVIEWS`;
+  const tabs = [
+    { id: 'list', label: '一覧', icon: 'ti-list' },
+    { id: 'search', label: '検索', icon: 'ti-search' },
+    { id: 'register', label: '新規登録', icon: 'ti-plus' },
+    { id: 'master', label: 'マスタ', icon: 'ti-database' },
+    { id: 'csv', label: 'CSV', icon: 'ti-file-export' }
+  ];
+  document.getElementById('nav-tabs').innerHTML = tabs.map(t =>
+    `<button class="nav-tab ${currentView === t.id ? 'active' : ''}" data-v="${t.id}"><i class="ti ${t.icon}"></i>${t.label}</button>`
+  ).join('');
+  document.querySelectorAll('.nav-tab').forEach(b => b.addEventListener('click', async () => {
+    currentView = b.dataset.v;
+    editingContractorId = null;
+    await refreshData();
+    render();
+  }));
+}
+
+function renderList() {
+  const v = document.getElementById('main-view');
+  const cats = state.masters.evaluationCategories;
+  v.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;flex-wrap:wrap;">
+      <div style="font-size:15px;font-weight:500;">業者一覧 <span style="font-size:11px;color:var(--text-secondary);font-weight:400;margin-left:8px;">${state.contractors.length} companies</span></div>
+      <div style="display:flex;gap:6px;">
+        <button class="btn btn-ghost" id="btn-refresh"><i class="ti ti-refresh"></i>更新</button>
+        <button class="btn btn-primary" id="btn-add-new"><i class="ti ti-plus"></i>新規登録</button>
+      </div>
+    </div>
+    ${state.contractors.length === 0 ? `
+      <div class="empty-state"><i class="ti ti-building"></i>まだ業者が登録されていません<br>
+        <button class="btn btn-primary" id="btn-add-empty" style="margin-top:14px;"><i class="ti ti-plus"></i>最初の業者を登録する</button>
+      </div>
+    ` : `
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>会社名 / Company</th><th style="text-align:center;">許可</th><th style="text-align:center;">総合</th>
+            ${cats.map(c => `<th style="text-align:center;font-size:9px;">${esc(c)}</th>`).join('')}
+            <th style="text-align:center;">件数</th>
+          </tr></thead>
+          <tbody>
+          ${state.contractors.map((c, i) => {
+            const catAvg = avgScoreByCategory(c.id) || {};
+            const total = avgScore(c.id);
+            const rc = reviewCount(c.id);
+            const av = i % 3 === 0 ? '' : (i % 3 === 1 ? 'alt' : 'alt2');
+            return `
+              <tr class="tr-click" data-id="${c.id}">
+                <td><div style="display:flex;align-items:center;gap:10px;">
+                  <div class="avatar ${av}" style="width:32px;height:32px;font-size:12px;">${esc(initials(c.name))}</div>
+                  <div><div style="font-weight:500;">${esc(c.name)}</div>
+                    <div style="font-size:10px;color:var(--text-secondary);">${esc(c.address || '住所未登録')}</div>
+                  </div>
+                </div></td>
+                <td style="text-align:center;">${c.hasLicense ? '<span class="chip l">許可</span>' : '<span style="color:var(--text-muted);font-size:10px;">—</span>'}</td>
+                <td style="text-align:center;">${total != null ? `<span style="color:var(--accent-amber);font-weight:600;font-size:14px;">${total.toFixed(1)}</span>` : '<span style="color:var(--text-muted);">—</span>'}</td>
+                ${cats.map(cat => `<td style="text-align:center;">${catAvg[cat] != null ? catAvg[cat].toFixed(1) : '<span style="color:var(--text-muted);">—</span>'}</td>`).join('')}
+                <td style="text-align:center;color:var(--text-secondary);">${rc || '—'}</td>
+              </tr>`;
+          }).join('')}
+          </tbody>
+        </table>
+      </div>
+    `}
+  `;
+  const goNew = () => { editingContractorId = null; formData = null; currentView = 'register'; render(); };
+  document.getElementById('btn-add-new')?.addEventListener('click', goNew);
+  document.getElementById('btn-add-empty')?.addEventListener('click', goNew);
+  document.getElementById('btn-refresh')?.addEventListener('click', async () => {
+    showLoading('最新データを取得中...');
+    await refreshData();
+    hideLoading();
+    render();
+    toast('最新データに更新しました');
+  });
+  document.querySelectorAll('tr.tr-click').forEach(r => r.addEventListener('click', () => {
+    currentContractorId = r.dataset.id;
+    currentView = 'detail';
+    render();
+  }));
+}
+
+function renderSearch() {
+  const v = document.getElementById('main-view');
+  v.innerHTML = `
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+        <i class="ti ti-search" style="font-size:18px;color:var(--neon);"></i>
+        <div style="font-size:15px;font-weight:500;">業者検索</div>
+        <span style="font-size:10px;color:var(--text-secondary);background:var(--bg-card);padding:3px 8px;border-radius:999px;">ALL AND</span>
+      </div>
+      <div class="filter-grid">
+        <div class="field-row"><div class="field-label"><i class="ti ti-building"></i>会社名 (あいまい)</div><input type="text" id="f-name" value="${esc(searchFilters.name)}" placeholder="例: 山田" /></div>
+        <div class="field-row"><div class="field-label"><i class="ti ti-user"></i>窓口担当者名 (あいまい)</div><input type="text" id="f-contact" value="${esc(searchFilters.contact)}" placeholder="例: 佐藤" /></div>
+        <div class="field-row"><div class="field-label"><i class="ti ti-map-pin"></i>住所 (あいまい)</div><input type="text" id="f-address" value="${esc(searchFilters.address)}" placeholder="例: 渋谷" /></div>
+        <div class="field-row"><div class="field-label"><i class="ti ti-certificate"></i>建設業許可証</div>
+          <label style="display:inline-flex;align-items:center;gap:8px;font-size:13px;padding-top:7px;cursor:pointer;">
+            <input type="checkbox" id="f-license" ${searchFilters.hasLicense ? 'checked' : ''} /><span>許可証ありのみ表示</span>
+          </label>
+        </div>
+      </div>
+      <div class="field-row"><div class="field-label"><i class="ti ti-award"></i>保持資格 (複数選択でAND)</div>
+        <div id="f-quals">${state.masters.qualifications.map(q =>
+          `<span class="chip chip-btn ${searchFilters.quals.includes(q) ? 'selected' : 'q'}" data-q="${esc(q)}">${esc(q)}</span>`).join('')}</div>
+      </div>
+      <div class="field-row"><div class="field-label"><i class="ti ti-tools"></i>施工可能工事種目 (複数選択でAND)</div>
+        <div id="f-works">${state.masters.workTypes.map(w =>
+          `<span class="chip chip-btn ${searchFilters.works.includes(w) ? 'selected' : 'w'}" data-w="${esc(w)}">${esc(w)}</span>`).join('')}</div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:14px;"><button class="btn btn-ghost" id="btn-clear-search"><i class="ti ti-refresh"></i>条件をクリア</button></div>
+    </div>
+    <div id="search-results" style="margin-top:14px;"></div>
+  `;
+  document.getElementById('f-name').addEventListener('input', e => { searchFilters.name = e.target.value; doSearch(); });
+  document.getElementById('f-contact').addEventListener('input', e => { searchFilters.contact = e.target.value; doSearch(); });
+  document.getElementById('f-address').addEventListener('input', e => { searchFilters.address = e.target.value; doSearch(); });
+  document.getElementById('f-license').addEventListener('change', e => { searchFilters.hasLicense = e.target.checked; doSearch(); });
+  document.querySelectorAll('#f-quals .chip-btn').forEach(c => c.addEventListener('click', () => {
+    const q = c.dataset.q;
+    if (searchFilters.quals.includes(q)) searchFilters.quals = searchFilters.quals.filter(x => x !== q);
+    else searchFilters.quals.push(q);
+    renderSearch();
+  }));
+  document.querySelectorAll('#f-works .chip-btn').forEach(c => c.addEventListener('click', () => {
+    const w = c.dataset.w;
+    if (searchFilters.works.includes(w)) searchFilters.works = searchFilters.works.filter(x => x !== w);
+    else searchFilters.works.push(w);
+    renderSearch();
+  }));
+  document.getElementById('btn-clear-search').addEventListener('click', () => {
+    searchFilters = { name: '', contact: '', address: '', hasLicense: false, quals: [], works: [] };
+    renderSearch();
+  });
+  doSearch();
+}
+
+function doSearch() {
+  const f = searchFilters;
+  const results = state.contractors.filter(c => {
+    if (f.name && !c.name.toLowerCase().includes(f.name.toLowerCase())) return false;
+    if (f.contact && !c.contacts.some(ct => (ct.name || '').toLowerCase().includes(f.contact.toLowerCase()))) return false;
+    if (f.address && !(c.address || '').toLowerCase().includes(f.address.toLowerCase())) return false;
+    if (f.hasLicense && !c.hasLicense) return false;
+    if (f.quals.length && !f.quals.every(q => c.qualifications.includes(q))) return false;
+    if (f.works.length && !f.works.every(w => c.workTypes.includes(w))) return false;
+    return true;
+  });
+  const r = document.getElementById('search-results');
+  if (!r) return;
+  const ac = [f.name, f.contact, f.address, f.hasLicense, ...f.quals, ...f.works].filter(Boolean).length;
+  if (!results.length) {
+    r.innerHTML = `<div class="empty-state"><i class="ti ti-mood-empty"></i>該当する業者が見つかりませんでした</div>`;
+    return;
+  }
+  r.innerHTML = `<div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px;display:flex;justify-content:space-between;padding:0 4px;">
+    <span><i class="ti ti-filter"></i> ${results.length}件 / ${state.contractors.length}件</span><span>${ac}個の条件適用中</span></div>
+    ${results.map((c, i) => contractorRowCard(c, i)).join('')}`;
+  bindRowClicks();
+}
+
+function contractorRowCard(c, i) {
+  const a = avgScore(c.id), rc = reviewCount(c.id);
+  const av = i % 3 === 0 ? '' : (i % 3 === 1 ? 'alt' : 'alt2');
+  return `<div class="row-card" data-id="${c.id}">
+    <div class="avatar ${av}">${esc(initials(c.name))}</div>
+    <div style="flex:1;min-width:0;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="font-weight:500;font-size:14px;">${esc(c.name)}</span>
+        ${c.hasLicense ? '<span class="chip l">許可</span>' : ''}
+        ${a != null ? `<span style="font-size:12px;color:var(--accent-amber);font-weight:600;">★ ${a.toFixed(1)} <span style="color:var(--text-secondary);font-weight:400;">(${rc})</span></span>` : '<span style="font-size:10px;color:var(--text-secondary);">評価なし</span>'}
+      </div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-top:3px;"><i class="ti ti-map-pin"></i> ${esc(c.address || '')}</div>
+      <div style="margin-top:4px;">${c.workTypes.slice(0, 4).map(w => `<span class="chip w">${esc(w)}</span>`).join('')}${c.workTypes.length > 4 ? `<span class="chip">+${c.workTypes.length - 4}</span>` : ''}</div>
+    </div>
+    <i class="ti ti-chevron-right" style="color:var(--text-secondary);"></i>
+  </div>`;
+}
+
+function bindRowClicks() {
+  document.querySelectorAll('.row-card').forEach(r => r.addEventListener('click', () => {
+    currentContractorId = r.dataset.id;
+    currentView = 'detail';
+    render();
+  }));
+}
+
+function renderDetail() {
+  const c = state.contractors.find(x => x.id === currentContractorId);
+  if (!c) { currentView = 'list'; render(); return; }
+  const reviews = state.reviews.filter(r => r.contractorId === c.id).sort((a, b) => b.date.localeCompare(a.date));
+  const cats = state.masters.evaluationCategories;
+  const catAvg = avgScoreByCategory(c.id) || {};
+  const total = avgScore(c.id);
+  const v = document.getElementById('main-view');
+  v.innerHTML = `
+    <div style="margin-bottom:12px;"><button class="btn btn-ghost" id="btn-back"><i class="ti ti-arrow-left"></i>戻る</button></div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start;">
+        <div style="display:flex;gap:14px;align-items:center;">
+          <div class="avatar" style="width:56px;height:56px;font-size:18px;border-radius:14px;">${esc(initials(c.name))}</div>
+          <div><div style="font-size:18px;font-weight:600;">${esc(c.name)}</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:3px;"><i class="ti ti-map-pin"></i> ${esc(c.address || '住所未登録')}</div>
+            <div style="margin-top:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+              ${c.hasLicense ? '<span class="chip l"><i class="ti ti-circle-check"></i> 建設業許可</span>' : '<span class="chip muted">許可なし</span>'}
+              ${total != null ? `<span style="font-size:13px;color:var(--accent-amber);font-weight:600;">★ ${total.toFixed(1)}</span><span style="font-size:11px;color:var(--text-secondary);">(${reviews.length}件)</span>` : ''}
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-ghost" id="btn-edit"><i class="ti ti-edit"></i>編集</button>
+          <button class="btn btn-danger" id="btn-delete"><i class="ti ti-trash"></i></button>
+        </div>
+      </div>
+
+      ${total != null ? `<div class="section-title">評価サマリー</div>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--bg-card);padding:14px;border-radius:10px;">
+        <div style="text-align:center;padding:8px 18px;background:rgba(239,159,39,0.1);border-radius:10px;border:0.5px solid rgba(239,159,39,0.2);">
+          <div style="font-size:32px;font-weight:600;color:var(--accent-amber);line-height:1;">${total.toFixed(1)}</div>
+          <div style="font-size:9px;color:var(--text-secondary);margin-top:4px;letter-spacing:1px;">${reviews.length} REVIEWS</div>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          ${cats.map(cat => {
+            const a = catAvg[cat]; const pct = a ? (a / 5 * 100) : 0;
+            return `<div style="display:grid;grid-template-columns:120px 1fr 36px;gap:10px;align-items:center;margin-bottom:6px;font-size:12px;">
+              <span style="color:var(--text-secondary);">${esc(cat)}</span>
+              <div class="stat-bar"><div class="stat-bar-fill" style="width:${pct}%;"></div></div>
+              <span style="color:var(--neon);font-weight:600;text-align:right;">${a ? a.toFixed(1) : '—'}</span>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>` : ''}
+
+      <div class="section-title">窓口連絡先</div>
+      ${c.contacts.map(ct => `<div class="card-inner" style="margin-bottom:6px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:13px;font-weight:500;">${esc(ct.name)} ${ct.role ? `<span style="font-size:10px;color:var(--text-secondary);font-weight:400;">(${esc(ct.role)})</span>` : ''}</div>
+            ${ct.phone ? `<div style="font-size:12px;color:var(--text-secondary);margin-top:3px;"><i class="ti ti-phone"></i> ${esc(ct.phone)}</div>` : ''}
+            ${ct.email ? `<div style="font-size:12px;color:var(--text-secondary);margin-top:2px;"><i class="ti ti-mail"></i> ${esc(ct.email)}</div>` : ''}
+          </div>
+          <div style="display:flex;gap:5px;">
+            ${ct.phone ? `<button class="btn btn-primary call-btn" data-name="${esc(ct.name)}" data-phone="${esc(ct.phone)}"><i class="ti ti-phone-call"></i>電話</button>` : ''}
+            ${ct.email ? `<button class="btn btn-ghost mail-btn" data-email="${esc(ct.email)}"><i class="ti ti-mail"></i></button>` : ''}
+          </div>
+        </div>
+      </div>`).join('')}
+
+      <div class="section-title">保持資格</div>
+      <div>${c.qualifications.length ? c.qualifications.map(q => `<span class="chip q">${esc(q)}</span>`).join('') : '<span style="font-size:11px;color:var(--text-secondary);">登録なし</span>'}</div>
+
+      <div class="section-title">施工可能工事種目</div>
+      <div>${c.workTypes.length ? c.workTypes.map(w => `<span class="chip w">${esc(w)}</span>`).join('') : '<span style="font-size:11px;color:var(--text-secondary);">登録なし</span>'}</div>
+
+      ${c.note ? `<div class="section-title">備考</div><div style="font-size:13px;background:var(--bg-card);padding:10px 14px;border-radius:8px;">${esc(c.note)}</div>` : ''}
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:22px;">
+        <div class="section-title" style="margin:0;">評価・口コミ (${reviews.length})</div>
+        <button class="btn btn-primary" id="btn-add-review"><i class="ti ti-plus"></i>評価を追加</button>
+      </div>
+      <div style="margin-top:10px;">
+      ${reviews.length ? reviews.map(r => {
+        const rAvg = Object.values(r.scores).reduce((a, b) => a + b, 0) / Object.values(r.scores).length;
+        return `<div class="review-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                ${stars(rAvg)}<span style="font-size:12px;color:var(--accent-amber);font-weight:600;margin-left:4px;">${rAvg.toFixed(1)}</span>
+              </div>
+              <div style="font-size:11px;color:var(--text-secondary);margin-top:6px;display:flex;flex-wrap:wrap;gap:12px;">
+                <span><i class="ti ti-building"></i> ${esc(r.siteName)}</span>
+                <span><i class="ti ti-user"></i> ${esc(r.reviewer)}</span>
+                <span><i class="ti ti-calendar"></i> ${esc(r.date)}</span>
+              </div>
+            </div>
+            <button class="icon-btn del-review" data-rid="${r.id}"><i class="ti ti-trash" style="font-size:12px;"></i></button>
+          </div>
+          <div style="margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:6px;">
+            ${Object.entries(r.scores).map(([k, v]) => `<div style="font-size:11px;display:flex;justify-content:space-between;background:var(--bg-base);padding:6px 10px;border-radius:7px;">
+              <span style="color:var(--text-secondary);">${esc(k)}</span><span style="color:var(--accent-amber);font-weight:600;">${v}.0</span></div>`).join('')}
+          </div>
+          ${r.comment ? `<div style="margin-top:10px;font-size:12px;background:var(--bg-base);padding:10px 12px;border-radius:7px;border-left:2px solid var(--neon);">${esc(r.comment)}</div>` : ''}
+        </div>`;
+      }).join('') : '<div class="empty-state"><i class="ti ti-star-off"></i>まだ評価がありません</div>'}
+      </div>
+    </div>
+  `;
+  document.getElementById('btn-back').addEventListener('click', () => { currentView = 'list'; render(); });
+  document.getElementById('btn-edit').addEventListener('click', () => {
+    editingContractorId = c.id; formData = null; currentView = 'register'; render();
+  });
+  document.getElementById('btn-delete').addEventListener('click', () => {
+    showModal(`
+      <div style="font-size:15px;font-weight:500;margin-bottom:8px;"><i class="ti ti-alert-triangle" style="color:var(--accent-amber);"></i> 業者を削除しますか？</div>
+      <div style="font-size:12px;color:var(--text-secondary);margin-bottom:14px;">「${esc(c.name)}」と関連する評価${reviews.length}件を削除します。取り消せません。</div>
+      <div style="display:flex;gap:6px;justify-content:flex-end;">
+        <button class="btn btn-ghost" onclick="closeModal()">キャンセル</button>
+        <button class="btn btn-danger" id="confirm-del" style="padding:8px 14px;">削除する</button>
+      </div>`);
+    document.getElementById('confirm-del').addEventListener('click', async () => {
+      closeModal();
+      showLoading('削除中...');
+      try {
+        await api.deleteContractor(c.id);
+        await refreshData();
+        hideLoading();
+        currentView = 'list';
+        render();
+        toast('業者を削除しました');
+      } catch (e) { hideLoading(); toast('削除に失敗しました: ' + e.message, 'error'); }
+    });
+  });
+  document.querySelectorAll('.call-btn').forEach(b => b.addEventListener('click', () => {
+    const name = b.dataset.name, phone = b.dataset.phone;
+    showModal(`<div style="text-align:center;">
+      <div style="width:64px;height:64px;border-radius:50%;background:var(--neon-dim);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;border:0.5px solid var(--border-mid);">
+        <i class="ti ti-phone-call" style="font-size:30px;color:var(--neon);"></i>
+      </div>
+      <div style="font-size:15px;font-weight:500;">${name} に電話しますか？</div>
+      <div style="font-size:14px;color:var(--neon);margin:6px 0 18px;font-weight:600;">${phone}</div>
+      <div style="display:flex;gap:6px;justify-content:center;">
+        <button class="btn btn-ghost" onclick="closeModal()">キャンセル</button>
+        <a href="tel:${phone.replace(/[^0-9+]/g, '')}" class="btn btn-primary" style="text-decoration:none;" onclick="setTimeout(closeModal,100)"><i class="ti ti-phone"></i>発信する</a>
+      </div></div>`);
+  }));
+  document.querySelectorAll('.mail-btn').forEach(b => b.addEventListener('click', () => { window.location.href = 'mailto:' + b.dataset.email; }));
+  document.getElementById('btn-add-review').addEventListener('click', () => openReviewModal(c.id));
+  document.querySelectorAll('.del-review').forEach(b => b.addEventListener('click', async () => {
+    showLoading('削除中...');
+    try {
+      await api.deleteReview(b.dataset.rid);
+      await refreshData();
+      hideLoading();
+      render();
+      toast('評価を削除しました');
+    } catch (e) { hideLoading(); toast('削除に失敗: ' + e.message, 'error'); }
+  }));
+}
+
+function openReviewModal(contractorId) {
+  showModal(`
+    <div style="font-size:15px;font-weight:500;margin-bottom:14px;"><i class="ti ti-star" style="color:var(--accent-amber);"></i> 評価を追加</div>
+    <div class="field-row"><div class="field-label">現場名</div><input type="text" id="rv-site" placeholder="例: 渋谷オフィスリノベ" /></div>
+    <div class="field-row"><div class="field-label">評価者 (現場担当)</div>
+      <select id="rv-reviewer">${state.masters.siteManagers.map(m => `<option value="${esc(m)}">${esc(m)}</option>`).join('')}</select>
+    </div>
+    <div class="field-row"><div class="field-label">評価日</div><input type="date" id="rv-date" value="${new Date().toISOString().slice(0, 10)}" /></div>
+    <div class="field-row"><div class="field-label">評価項目</div>
+      ${state.masters.evaluationCategories.map(cat => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px;">
+          <span>${esc(cat)}</span>
+          <select class="rv-score" data-cat="${esc(cat)}" style="width:auto;">
+            <option value="5">★★★★★</option><option value="4">★★★★☆</option>
+            <option value="3" selected>★★★☆☆</option><option value="2">★★☆☆☆</option><option value="1">★☆☆☆☆</option>
+          </select>
+        </div>`).join('')}
+    </div>
+    <div class="field-row"><div class="field-label">コメント (任意)</div><textarea id="rv-comment" rows="2" placeholder="所感や特記事項"></textarea></div>
+    <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:12px;">
+      <button class="btn btn-ghost" onclick="closeModal()">キャンセル</button>
+      <button class="btn btn-primary" id="rv-save"><i class="ti ti-check"></i>保存</button>
+    </div>`);
+  document.getElementById('rv-save').addEventListener('click', async () => {
+    const site = document.getElementById('rv-site').value.trim();
+    if (!site) { toast('現場名を入力してください', 'warn'); return; }
+    const scores = {};
+    document.querySelectorAll('.rv-score').forEach(s => scores[s.dataset.cat] = Number(s.value));
+    const review = {
+      contractorId, siteName: site,
+      reviewer: document.getElementById('rv-reviewer').value,
+      date: document.getElementById('rv-date').value,
+      scores, comment: document.getElementById('rv-comment').value.trim()
+    };
+    closeModal();
+    showLoading('保存中...');
+    try {
+      await api.saveReview(review);
+      await refreshData();
+      hideLoading();
+      render();
+      toast('評価を追加しました');
+    } catch (e) { hideLoading(); toast('保存失敗: ' + e.message, 'error'); }
+  });
+}
+
+function initForm() {
+  if (editingContractorId) {
+    const c = state.contractors.find(x => x.id === editingContractorId);
+    formData = JSON.parse(JSON.stringify(c));
+    formData._clientVersion = c.updatedAt || 0;
+    formData.contacts.forEach(ct => { if (!('email' in ct)) ct.email = ''; });
+  } else {
+    formData = { name: '', address: '', hasLicense: false, contacts: [{ name: '', phone: '', email: '', role: '' }], qualifications: [], workTypes: [], note: '', _clientVersion: 0 };
+  }
+}
+
+function renderRegister() {
+  if (!formData) initForm();
+  const v = document.getElementById('main-view');
+  v.innerHTML = `
+    <div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-size:15px;font-weight:500;">${editingContractorId ? '業者情報の編集' : '新規業者登録'}</div>
+      <button class="btn btn-ghost" id="reg-cancel"><i class="ti ti-x"></i>キャンセル</button>
+    </div>
+    <div class="card">
+      <div class="field-row"><div class="field-label">会社名 <span style="color:var(--danger);">*</span></div>
+        <input type="text" id="reg-name" value="${esc(formData.name)}" placeholder="例: 株式会社山田建設" />
+        <div id="dup-warning" style="font-size:11px;color:var(--accent-amber);margin-top:5px;display:none;"></div>
+      </div>
+      <div class="field-row"><div class="field-label">会社住所</div>
+        <input type="text" id="reg-address" value="${esc(formData.address)}" placeholder="例: 東京都渋谷区..." />
+      </div>
+      <div class="field-row"><label style="display:inline-flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;">
+        <input type="checkbox" id="reg-license" ${formData.hasLicense ? 'checked' : ''} /><span>建設業許可証あり</span>
+      </label></div>
+      <div class="section-title">窓口連絡先 <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:var(--text-secondary);margin-left:4px;">複数登録可</span></div>
+      <div id="contacts-list"></div>
+      <button class="btn btn-ghost" id="add-contact" style="margin-top:6px;"><i class="ti ti-plus"></i>窓口を追加</button>
+      <div class="section-title">保持資格</div>
+      <div id="reg-quals">${state.masters.qualifications.map(q =>
+        `<span class="chip chip-btn ${formData.qualifications.includes(q) ? 'selected' : 'q'}" data-q="${esc(q)}">${esc(q)}</span>`).join('')}</div>
+      <div class="section-title">施工可能工事種目</div>
+      <div id="reg-works">${state.masters.workTypes.map(w =>
+        `<span class="chip chip-btn ${formData.workTypes.includes(w) ? 'selected' : 'w'}" data-w="${esc(w)}">${esc(w)}</span>`).join('')}</div>
+      <div class="section-title">備考</div>
+      <textarea id="reg-note" rows="2" placeholder="任意">${esc(formData.note)}</textarea>
+      <div style="display:flex;gap:6px;margin-top:18px;justify-content:flex-end;">
+        <button class="btn btn-primary" id="reg-save"><i class="ti ti-device-floppy"></i>${editingContractorId ? '更新する' : '登録する'}</button>
+      </div>
+    </div>`;
+  renderContactsList();
+  document.getElementById('reg-name').addEventListener('input', e => { formData.name = e.target.value; checkDuplicate(); });
+  document.getElementById('reg-address').addEventListener('input', e => formData.address = e.target.value);
+  document.getElementById('reg-license').addEventListener('change', e => formData.hasLicense = e.target.checked);
+  document.getElementById('reg-note').addEventListener('input', e => formData.note = e.target.value);
+  document.getElementById('add-contact').addEventListener('click', () => {
+    formData.contacts.push({ name: '', phone: '', email: '', role: '' });
+    renderContactsList();
+  });
+  document.querySelectorAll('#reg-quals .chip-btn').forEach(c => c.addEventListener('click', () => {
+    const q = c.dataset.q;
+    if (formData.qualifications.includes(q)) formData.qualifications = formData.qualifications.filter(x => x !== q);
+    else formData.qualifications.push(q);
+    c.classList.toggle('selected'); c.classList.toggle('q');
+  }));
+  document.querySelectorAll('#reg-works .chip-btn').forEach(c => c.addEventListener('click', () => {
+    const w = c.dataset.w;
+    if (formData.workTypes.includes(w)) formData.workTypes = formData.workTypes.filter(x => x !== w);
+    else formData.workTypes.push(w);
+    c.classList.toggle('selected'); c.classList.toggle('w');
+  }));
+  document.getElementById('reg-cancel').addEventListener('click', () => {
+    formData = null;
+    currentView = editingContractorId ? 'detail' : 'list';
+    render();
+  });
+  document.getElementById('reg-save').addEventListener('click', saveContractor);
+  checkDuplicate();
+}
+
+function renderContactsList() {
+  const list = document.getElementById('contacts-list');
+  list.innerHTML = formData.contacts.map((ct, i) => `
+    <div class="card-inner" style="margin-bottom:6px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:6px;margin-bottom:6px;align-items:center;">
+        <input type="text" placeholder="氏名" value="${esc(ct.name)}" data-idx="${i}" data-field="name" class="contact-input" />
+        <input type="text" placeholder="役職 (任意)" value="${esc(ct.role || '')}" data-idx="${i}" data-field="role" class="contact-input" />
+        <button class="icon-btn rm-contact" data-rm="${i}" ${formData.contacts.length <= 1 ? 'disabled' : ''}><i class="ti ti-trash" style="font-size:13px;"></i></button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <input type="tel" placeholder="電話番号" value="${esc(ct.phone)}" data-idx="${i}" data-field="phone" class="contact-input" />
+        <input type="email" placeholder="メールアドレス (任意)" value="${esc(ct.email || '')}" data-idx="${i}" data-field="email" class="contact-input" />
+      </div>
+    </div>`).join('');
+  list.querySelectorAll('.contact-input').forEach(inp => {
+    inp.addEventListener('input', e => { formData.contacts[Number(e.target.dataset.idx)][e.target.dataset.field] = e.target.value; });
+  });
+  list.querySelectorAll('.rm-contact').forEach(b => b.addEventListener('click', () => {
+    if (formData.contacts.length <= 1) return;
+    formData.contacts.splice(Number(b.dataset.rm), 1);
+    renderContactsList();
+  }));
+}
+
+function checkDuplicate() {
+  const name = (formData.name || '').trim();
+  const w = document.getElementById('dup-warning');
+  if (!name) { w.style.display = 'none'; return; }
+  const dups = state.contractors.filter(c => c.id !== editingContractorId && c.name.trim() === name);
+  if (dups.length) {
+    w.style.display = 'block';
+    w.innerHTML = `<i class="ti ti-alert-triangle"></i> 同名の業者が既に${dups.length}件登録されています。登録時に確認します。`;
+  } else { w.style.display = 'none'; }
+}
+
+async function saveContractor() {
+  if (!formData.name.trim()) { toast('会社名を入力してください', 'warn'); return; }
+  formData.contacts = formData.contacts.filter(c => c.name.trim() || c.phone.trim() || c.email.trim());
+  if (!formData.contacts.length) formData.contacts = [{ name: '', phone: '', email: '', role: '' }];
+
+  const dups = state.contractors.filter(c => c.id !== editingContractorId && c.name.trim() === formData.name.trim());
+  if (dups.length) {
+    showModal(`
+      <div style="font-size:15px;font-weight:500;margin-bottom:8px;"><i class="ti ti-alert-triangle" style="color:var(--accent-amber);"></i> 同名の業者があります</div>
+      <div style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">「${esc(formData.name)}」は既に${dups.length}件登録されています。それでも登録しますか？</div>
+      <div style="margin-bottom:14px;">${dups.map(d => `<div style="font-size:11px;background:var(--bg-card);padding:7px 12px;border-radius:7px;margin-bottom:4px;">${esc(d.name)} / ${esc(d.address || '住所未登録')}</div>`).join('')}</div>
+      <div style="display:flex;gap:6px;justify-content:flex-end;">
+        <button class="btn btn-ghost" onclick="closeModal()">キャンセル</button>
+        <button class="btn btn-primary" id="confirm-dup">それでも登録する</button>
+      </div>`);
+    document.getElementById('confirm-dup').addEventListener('click', () => { closeModal(); finalizeSave(); });
+  } else { finalizeSave(); }
+}
+
+async function finalizeSave() {
+  showLoading('保存中...');
+  try {
+    const payload = {
+      id: editingContractorId || '',
+      name: formData.name, address: formData.address, hasLicense: formData.hasLicense,
+      contacts: formData.contacts, qualifications: formData.qualifications,
+      workTypes: formData.workTypes, note: formData.note
+    };
+    const result = await api.saveContractor(payload, formData._clientVersion || 0);
+    if (result && result.conflict) {
+      hideLoading();
+      showModal(`
+        <div style="font-size:15px;font-weight:500;margin-bottom:8px;"><i class="ti ti-alert-triangle" style="color:var(--accent-amber);"></i> 同時編集を検知しました</div>
+        <div style="font-size:12px;color:var(--text-secondary);margin-bottom:14px;">他のユーザーがこの業者を更新しました。最新版を読み込んでから再編集してください。</div>
+        <div style="display:flex;gap:6px;justify-content:flex-end;">
+          <button class="btn btn-primary" id="reload-now"><i class="ti ti-refresh"></i>最新を読み込む</button>
+        </div>`);
+      document.getElementById('reload-now').addEventListener('click', async () => {
+        closeModal();
+        showLoading('再読込中...');
+        await refreshData();
+        hideLoading();
+        if (editingContractorId) {
+          formData = null;
+          currentView = 'detail';
+          currentContractorId = editingContractorId;
+          editingContractorId = null;
+          render();
+        } else {
+          currentView = 'list';
+          render();
+        }
+      });
+      return;
+    }
+    await refreshData();
+    hideLoading();
+    if (editingContractorId) {
+      currentContractorId = editingContractorId;
+      editingContractorId = null;
+      currentView = 'detail';
+      toast('業者情報を更新しました');
+    } else {
+      currentView = 'list';
+      toast('業者を登録しました');
+    }
+    formData = null;
+    render();
+  } catch (e) {
+    hideLoading();
+    toast('保存に失敗しました: ' + e.message, 'error');
+  }
+}
+
+function renderMaster() {
+  const v = document.getElementById('main-view');
+  v.innerHTML = `
+    <div style="font-size:15px;font-weight:500;margin-bottom:14px;"><i class="ti ti-database"></i> マスタ管理</div>
+    <div class="grid-2">
+      ${masterCard('qualifications', '資格', 'ti-certificate')}
+      ${masterCard('workTypes', '工事種目', 'ti-tools')}
+      ${masterCard('evaluationCategories', '評価項目', 'ti-star')}
+      ${masterCard('siteManagers', '現場担当 (自社)', 'ti-users')}
+    </div>`;
+  bindMasterEvents();
+}
+
+function masterCard(key, label, icon) {
+  return `<div class="card">
+    <div style="font-size:13px;font-weight:500;margin-bottom:10px;"><i class="ti ${icon}" style="color:var(--neon);"></i> ${label} <span style="font-size:10px;color:var(--text-secondary);font-weight:400;margin-left:4px;">${state.masters[key].length}件</span></div>
+    <div style="margin-bottom:10px;max-height:200px;overflow-y:auto;">
+      ${state.masters[key].length ? state.masters[key].map((item, i) => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 10px;border-radius:6px;font-size:12px;background:var(--bg-card);margin-bottom:3px;">
+          <span>${esc(item)}</span>
+          <button class="icon-btn" data-master="${key}" data-idx="${i}" style="width:24px;height:24px;"><i class="ti ti-trash" style="font-size:11px;"></i></button>
+        </div>`).join('') : '<div style="text-align:center;color:var(--text-secondary);font-size:11px;padding:14px;">登録なし</div>'}
+    </div>
+    <div style="display:flex;gap:5px;">
+      <input type="text" id="add-${key}" placeholder="追加..." style="flex:1;" />
+      <button class="btn btn-ghost" data-add-master="${key}"><i class="ti ti-plus"></i></button>
+    </div>
+  </div>`;
+}
+
+async function persistMasters() {
+  showLoading('マスタ保存中...');
+  try {
+    await api.saveMasters(state.masters);
+    hideLoading();
+    return true;
+  } catch (e) {
+    hideLoading();
+    toast('マスタの保存に失敗: ' + e.message, 'error');
+    return false;
+  }
+}
+
+function bindMasterEvents() {
+  document.querySelectorAll('[data-add-master]').forEach(b => b.addEventListener('click', async () => {
+    const key = b.dataset.addMaster;
+    const inp = document.getElementById('add-' + key);
+    const val = inp.value.trim();
+    if (!val) return;
+    if (state.masters[key].includes(val)) { toast('既に登録されています', 'warn'); return; }
+    state.masters[key].push(val);
+    if (await persistMasters()) { renderMaster(); toast('追加しました'); }
+  }));
+  document.querySelectorAll('[data-master]').forEach(b => b.addEventListener('click', async () => {
+    const key = b.dataset.master, idx = Number(b.dataset.idx);
+    state.masters[key].splice(idx, 1);
+    if (await persistMasters()) renderMaster();
+  }));
+  document.querySelectorAll('[id^="add-"]').forEach(inp => {
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        const key = inp.id.replace('add-', '');
+        document.querySelector(`[data-add-master="${key}"]`).click();
+      }
+    });
+  });
+}
+
+function renderCSV() {
+  const v = document.getElementById('main-view');
+  v.innerHTML = `
+    <div style="font-size:15px;font-weight:500;margin-bottom:14px;"><i class="ti ti-file-export"></i> CSV エクスポート / インポート</div>
+    <div class="card" style="margin-bottom:12px;">
+      <div style="font-size:13px;font-weight:500;margin-bottom:6px;"><i class="ti ti-download" style="color:var(--neon);"></i> エクスポート</div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:12px;">クリップボードコピーまたはファイル保存ができます</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <button class="btn btn-ghost" data-export="contractors"><i class="ti ti-building"></i>業者一覧</button>
+        <button class="btn btn-ghost" data-export="reviews"><i class="ti ti-star"></i>評価一覧</button>
+        <button class="btn btn-ghost" data-export="masters"><i class="ti ti-database"></i>マスタ</button>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:500;margin-bottom:6px;"><i class="ti ti-upload" style="color:var(--neon);"></i> インポート</div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px;">CSVをスプレッドシートに直接貼り付ける運用も可能です</div>
+      <select id="imp-type" style="margin-bottom:10px;">
+        <option value="contractors">業者一覧</option>
+        <option value="reviews">評価一覧</option>
+      </select>
+      <textarea id="imp-text" rows="6" placeholder="ヘッダー行から貼り付け..."></textarea>
+      <div style="display:flex;gap:6px;margin-top:10px;">
+        <button class="btn btn-primary" id="imp-do"><i class="ti ti-upload"></i>取り込み実行</button>
+        <button class="btn btn-ghost" id="imp-file"><i class="ti ti-file"></i>ファイルから読込</button>
+        <input type="file" id="imp-file-input" accept=".csv,.txt" style="display:none;" />
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px;">
+      <div style="font-size:12px;font-weight:500;margin-bottom:8px;"><i class="ti ti-info-circle" style="color:var(--neon);"></i> CSV フォーマット</div>
+      <div style="font-size:10px;color:var(--text-secondary);font-family:'SF Mono',monospace;background:var(--bg-base);padding:10px;border-radius:7px;line-height:1.7;border:0.5px solid var(--border-soft);">
+        <div style="color:var(--neon);">▶ 業者:</div>
+        会社名,住所,建設業許可,窓口,資格,工事種目,備考<br>
+        <span style="color:var(--text-muted);">※ 窓口: 氏名:役職:電話:メール を | 区切り</span><br>
+        <span style="color:var(--text-muted);">※ 資格・工事種目は ; 区切り / 許可は「有」or「無」</span>
+        <div style="color:var(--neon);margin-top:10px;">▶ 評価:</div>
+        会社名,現場名,評価者,日付,予算感,事前対応の早さ,施工技術,現場での対応力,コメント
+      </div>
+    </div>`;
+  document.querySelectorAll('[data-export]').forEach(b => b.addEventListener('click', () => doExport(b.dataset.export)));
+  document.getElementById('imp-do').addEventListener('click', doImport);
+  document.getElementById('imp-file').addEventListener('click', () => document.getElementById('imp-file-input').click());
+  document.getElementById('imp-file-input').addEventListener('change', e => {
+    const file = e.target.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => { document.getElementById('imp-text').value = ev.target.result; };
+    reader.readAsText(file, 'UTF-8');
+  });
+}
+
+function csvEsc(v) { v = String(v == null ? '' : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+
+function buildCSV(type) {
+  let csv = '';
+  if (type === 'contractors') {
+    csv = '会社名,住所,建設業許可,窓口,資格,工事種目,備考\n';
+    state.contractors.forEach(c => {
+      const ct = c.contacts.map(x => `${x.name}:${x.role || ''}:${x.phone}:${x.email || ''}`).join('|');
+      csv += [c.name, c.address, c.hasLicense ? '有' : '無', ct, c.qualifications.join(';'), c.workTypes.join(';'), c.note || ''].map(csvEsc).join(',') + '\n';
+    });
+  } else if (type === 'reviews') {
+    csv = '会社名,現場名,評価者,日付,' + state.masters.evaluationCategories.join(',') + ',コメント\n';
+    state.reviews.forEach(r => {
+      const c = state.contractors.find(x => x.id === r.contractorId);
+      const row = [c ? c.name : '', r.siteName, r.reviewer, r.date];
+      state.masters.evaluationCategories.forEach(cat => row.push(r.scores[cat] || ''));
+      row.push(r.comment || '');
+      csv += row.map(csvEsc).join(',') + '\n';
+    });
+  } else if (type === 'masters') {
+    csv = '種別,項目\n';
+    [['資格', 'qualifications'], ['工事種目', 'workTypes'], ['評価項目', 'evaluationCategories'], ['現場担当', 'siteManagers']].forEach(([l, k]) => {
+      state.masters[k].forEach(item => { csv += `${csvEsc(l)},${csvEsc(item)}\n`; });
+    });
+  }
+  return csv;
+}
+
+function doExport(type) {
+  const csv = buildCSV(type);
+  const tl = { contractors: '業者一覧', reviews: '評価一覧', masters: 'マスタ' }[type];
+  showModal(`
+    <div style="font-size:15px;font-weight:500;margin-bottom:10px;">${tl} CSV</div>
+    <textarea readonly rows="10" style="font-family:'SF Mono',monospace;font-size:11px;" onclick="this.select()">${esc(csv)}</textarea>
+    <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:10px;flex-wrap:wrap;">
+      <button class="btn btn-ghost" onclick="closeModal()">閉じる</button>
+      <button class="btn btn-ghost" id="csv-download"><i class="ti ti-download"></i>CSV保存</button>
+      <button class="btn btn-primary" id="csv-copy"><i class="ti ti-copy"></i>コピー</button>
+    </div>`);
+  document.getElementById('csv-copy').addEventListener('click', () => {
+    navigator.clipboard.writeText(csv).then(() => toast('コピーしました'));
+  });
+  document.getElementById('csv-download').addEventListener('click', () => {
+    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `${type}_${new Date().toISOString().slice(0, 10)}.csv`; a.click();
+    URL.revokeObjectURL(url);
+    toast('CSV保存しました');
+  });
+}
+
+function parseCSV(text) {
+  const rows = []; let row = [], cur = '', inq = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inq) {
+      if (ch === '"' && text[i + 1] === '"') { cur += '"'; i++; }
+      else if (ch === '"') inq = false; else cur += ch;
+    } else {
+      if (ch === '"') inq = true;
+      else if (ch === ',') { row.push(cur); cur = ''; }
+      else if (ch === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; }
+      else if (ch !== '\r') cur += ch;
+    }
+  }
+  if (cur || row.length) { row.push(cur); rows.push(row); }
+  return rows;
+}
+
+async function doImport() {
+  const type = document.getElementById('imp-type').value;
+  const text = document.getElementById('imp-text').value.trim();
+  if (!text) { toast('CSVを入力してください', 'warn'); return; }
+  const rows = parseCSV(text);
+  if (rows.length < 2) { toast('データがありません', 'warn'); return; }
+  rows.shift();
+  const items = [];
+  if (type === 'contractors') {
+    rows.forEach(r => {
+      if (!r[0]) return;
+      const contacts = (r[3] || '').split('|').filter(Boolean).map(s => {
+        const p = s.split(':');
+        return { name: p[0] || '', role: p[1] || '', phone: p[2] || '', email: p[3] || '' };
+      });
+      items.push({
+        name: r[0], address: r[1] || '', hasLicense: (r[2] || '').includes('有'),
+        contacts: contacts.length ? contacts : [{ name: '', role: '', phone: '', email: '' }],
+        qualifications: (r[4] || '').split(';').filter(Boolean),
+        workTypes: (r[5] || '').split(';').filter(Boolean),
+        note: r[6] || ''
+      });
+    });
+  } else if (type === 'reviews') {
+    rows.forEach(r => {
+      if (!r[0]) return;
+      const c = state.contractors.find(x => x.name === r[0]);
+      if (!c) return;
+      const scores = {};
+      state.masters.evaluationCategories.forEach((cat, i) => { if (r[4 + i]) scores[cat] = Number(r[4 + i]); });
+      items.push({
+        contractorId: c.id, siteName: r[1] || '', reviewer: r[2] || '', date: r[3] || '',
+        scores, comment: r[4 + state.masters.evaluationCategories.length] || ''
+      });
+    });
+  }
+  showModal(`
+    <div style="font-size:15px;font-weight:500;margin-bottom:8px;"><i class="ti ti-alert-triangle" style="color:var(--accent-amber);"></i> 取り込み確認</div>
+    <div style="font-size:12px;color:var(--text-secondary);margin-bottom:14px;">${items.length}件を取り込みます。<br>※既存データは全て置き換わります。続行しますか？</div>
+    <div style="display:flex;gap:6px;justify-content:flex-end;">
+      <button class="btn btn-ghost" onclick="closeModal()">キャンセル</button>
+      <button class="btn btn-primary" id="imp-confirm">取り込む</button>
+    </div>`);
+  document.getElementById('imp-confirm').addEventListener('click', async () => {
+    closeModal();
+    showLoading('取り込み中...');
+    try {
+      const payload = type === 'contractors' ? { contractors: items } : { reviews: items };
+      await api.replaceAll(payload);
+      await refreshData();
+      hideLoading();
+      render();
+      toast(`${items.length}件取り込みました`);
+      document.getElementById('imp-text') && (document.getElementById('imp-text').value = '');
+    } catch (e) { hideLoading(); toast('取り込み失敗: ' + e.message, 'error'); }
+  });
+}
+
+function render() {
+  renderNav();
+  if (currentView === 'list') renderList();
+  else if (currentView === 'search') renderSearch();
+  else if (currentView === 'detail') renderDetail();
+  else if (currentView === 'register') { initForm(); renderRegister(); }
+  else if (currentView === 'master') renderMaster();
+  else if (currentView === 'csv') renderCSV();
+}
+
+(async function init() {
+  showLoading('スプレッドシートに接続中...');
+  const ok = await refreshData();
+  hideLoading();
+  if (!ok) {
+    document.getElementById('main-view').innerHTML = `
+      <div class="empty-state"><i class="ti ti-alert-circle"></i>
+        スプレッドシートへの接続に失敗しました<br>
+        <button class="btn btn-primary" onclick="location.reload()" style="margin-top:14px;"><i class="ti ti-refresh"></i>再読み込み</button>
+      </div>`;
+    return;
+  }
+  render();
+})();
+
+})();
+</script>
+</body>
+</html>
