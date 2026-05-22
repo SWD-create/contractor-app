@@ -31,15 +31,15 @@
   html, body {
     background: var(--bg-base); color: var(--text-primary);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif;
-    font-size: 14px; line-height: 1.6; min-height: 100vh;
+    font-size: 15px; line-height: 1.6; min-height: 100vh;
   }
   body {
     background: radial-gradient(ellipse 800px 400px at top, rgba(29, 158, 117, 0.05), transparent), var(--bg-base);
-    padding: 16px;
+    padding: 8px 16px 16px 16px;
   }
   .app-container { max-width: 1100px; margin: 0 auto; }
 
-  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; position: sticky; top: 8px; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
   .header-brand { display: flex; align-items: center; gap: 12px; }
   .brand-icon { width: 42px; height: 42px; border-radius: 11px; background: #0f2a30; border: 0.5px solid var(--border-mid); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 18px rgba(93, 202, 165, 0.25); overflow: hidden; }
   .brand-icon svg { display: block; }
@@ -51,11 +51,11 @@
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
   .nav-tabs { display: flex; gap: 3px; flex-wrap: wrap; }
-  .nav-tab { padding: 7px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; color: var(--text-secondary); background: transparent; border: none; display: inline-flex; align-items: center; gap: 5px; font-family: inherit; transition: all 0.15s; }
+  .nav-tab { padding: 9px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; color: var(--text-secondary); background: transparent; border: none; display: inline-flex; align-items: center; gap: 5px; font-family: inherit; transition: all 0.15s; }
   .nav-tab:hover { color: var(--text-primary); background: var(--bg-card); }
   .nav-tab.active { background: var(--neon-dim); color: var(--neon-bright); border: 0.5px solid var(--border-mid); font-weight: 500; }
 
-  .btn { padding: 8px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: all 0.15s; white-space: nowrap; }
+  .btn { padding: 10px 16px; border-radius: 8px; font-size: 13px; cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: all 0.15s; white-space: nowrap; }
   .btn:disabled { opacity: 0.5; cursor: not-allowed; }
   .btn-primary { background: var(--neon); color: #0a1f24; font-weight: 600; box-shadow: 0 0 12px rgba(93, 202, 165, 0.25); }
   .btn-primary:hover:not(:disabled) { background: var(--neon-bright); }
@@ -68,7 +68,7 @@
   .card-inner { background: var(--bg-card); border-radius: 8px; padding: 10px 12px; }
 
   input[type="text"], input[type="tel"], input[type="email"], input[type="date"], textarea, select {
-    width: 100%; padding: 9px 12px; background: var(--bg-base); border: 0.5px solid var(--border-soft); border-radius: 8px; color: var(--text-primary); font-size: 13px; font-family: inherit; transition: border-color 0.15s, background 0.15s;
+    width: 100%; padding: 11px 14px; background: var(--bg-base); border: 0.5px solid var(--border-soft); border-radius: 8px; color: var(--text-primary); font-size: 16px; font-family: inherit; transition: border-color 0.15s, background 0.15s;
   }
   input:focus, textarea:focus, select:focus { outline: none; border-color: var(--neon); background: var(--bg-elev); }
   select option { background: var(--bg-base); color: var(--text-primary); }
@@ -81,7 +81,8 @@
   .section-title { font-size: 10px; color: var(--neon); text-transform: uppercase; letter-spacing: 1.5px; margin: 20px 0 8px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
   .section-title::before { content: ""; width: 3px; height: 12px; background: var(--neon); border-radius: 2px; }
 
-  .chip { display: inline-flex; align-items: center; gap: 3px; padding: 4px 10px; border-radius: 999px; font-size: 11px; margin: 2px; border: 0.5px solid transparent; background: var(--bg-card); color: var(--text-secondary); }
+  .chip { display: inline-flex; align-items: center; gap: 3px; padding: 5px 12px; border-radius: 999px; font-size: 12px; margin: 2px; border: 0.5px solid transparent; background: var(--bg-card); color: var(--text-secondary); }
+  .chip-lg { padding: 9px 18px; font-size: 14px; margin: 4px; }
   .chip.q { background: rgba(93, 202, 165, 0.12); color: var(--neon); border-color: rgba(93, 202, 165, 0.25); }
   .chip.w { background: rgba(127, 119, 221, 0.12); color: #afa9ec; border-color: rgba(127, 119, 221, 0.25); }
   .chip.l { background: var(--neon-dim); color: var(--neon); border-color: var(--border-mid); }
@@ -133,7 +134,8 @@
   ::-webkit-scrollbar-track { background: var(--bg-base); }
   ::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 4px; }
 
-  @media (max-width: 600px) { body { padding: 10px; } .card { padding: 14px; } th, td { padding: 8px 6px; font-size: 11px; } }
+  .list-row:hover { background: var(--bg-card-hover); }
+  @media (max-width: 600px) { body { padding: 6px 10px 10px 10px; } .card { padding: 14px; } th, td { padding: 8px 6px; font-size: 12px; } }
 </style>
 </head>
 <body>
@@ -186,7 +188,7 @@ const api = {
 
 // ============== API設定 ==============
 // ⚠️ ここにGASのウェブアプリURLを設定してください
-const API_URL = 'https://script.google.com/macros/s/AKfycbwm10F9y6JZojJWMoPtrJkdkmZk_YI2zv2xX7w-fJ4CltzMOsbHyDxEmE7XZGCbRL7X7A/exec';
+const API_URL = 'https://script.google.com/macros/s/__PASTE_YOUR_GAS_URL_HERE__/exec';
 
 // JSONPでGETリクエスト (CORS回避)
 function jsonpGet(action) {
@@ -264,7 +266,8 @@ let currentView = 'list';
 let currentContractorId = null;
 let editingContractorId = null;
 let formData = null;
-let searchFilters = { name: '', contact: '', address: '', hasLicense: false, quals: [], works: [] };
+let backTarget = 'list'; // 詳細から戻る先 ('list' or 'search')
+let searchFilters = { freeText: '', hasLicense: false, quals: [], works: [] };
 
 function uid(p) { return p + '_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6); }
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -343,20 +346,18 @@ function renderNav() {
   document.getElementById('nav-tabs').innerHTML = tabs.map(t =>
     `<button class="nav-tab ${currentView === t.id ? 'active' : ''}" data-v="${t.id}"><i class="ti ${t.icon}"></i>${t.label}</button>`
   ).join('');
-  document.querySelectorAll('.nav-tab').forEach(b => b.addEventListener('click', async () => {
+  document.querySelectorAll('.nav-tab').forEach(b => b.addEventListener('click', () => {
     currentView = b.dataset.v;
     editingContractorId = null;
-    await refreshData();
     render();
   }));
 }
 
 function renderList() {
   const v = document.getElementById('main-view');
-  const cats = state.masters.evaluationCategories;
   v.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;flex-wrap:wrap;">
-      <div style="font-size:15px;font-weight:500;">業者一覧 <span style="font-size:11px;color:var(--text-secondary);font-weight:400;margin-left:8px;">${state.contractors.length} companies</span></div>
+      <div style="font-size:17px;font-weight:600;">業者一覧 <span style="font-size:13px;color:var(--text-secondary);font-weight:400;margin-left:8px;">${state.contractors.length}社</span></div>
       <div style="display:flex;gap:6px;">
         <button class="btn btn-ghost" id="btn-refresh"><i class="ti ti-refresh"></i>更新</button>
         <button class="btn btn-primary" id="btn-add-new"><i class="ti ti-plus"></i>新規登録</button>
@@ -367,35 +368,8 @@ function renderList() {
         <button class="btn btn-primary" id="btn-add-empty" style="margin-top:14px;"><i class="ti ti-plus"></i>最初の業者を登録する</button>
       </div>
     ` : `
-      <div class="table-wrap">
-        <table>
-          <thead><tr>
-            <th>会社名 / Company</th><th style="text-align:center;">許可</th><th style="text-align:center;">総合</th>
-            ${cats.map(c => `<th style="text-align:center;font-size:9px;">${esc(c)}</th>`).join('')}
-            <th style="text-align:center;">件数</th>
-          </tr></thead>
-          <tbody>
-          ${state.contractors.map((c, i) => {
-            const catAvg = avgScoreByCategory(c.id) || {};
-            const total = avgScore(c.id);
-            const rc = reviewCount(c.id);
-            const av = i % 3 === 0 ? '' : (i % 3 === 1 ? 'alt' : 'alt2');
-            return `
-              <tr class="tr-click" data-id="${c.id}">
-                <td><div style="display:flex;align-items:center;gap:10px;">
-                  <div class="avatar ${av}" style="width:32px;height:32px;font-size:12px;">${esc(initials(c.name))}</div>
-                  <div><div style="font-weight:500;">${esc(c.name)}</div>
-                    <div style="font-size:10px;color:var(--text-secondary);">${esc(c.address || '住所未登録')}</div>
-                  </div>
-                </div></td>
-                <td style="text-align:center;">${c.hasLicense ? '<span class="chip l">許可</span>' : '<span style="color:var(--text-muted);font-size:10px;">—</span>'}</td>
-                <td style="text-align:center;">${total != null ? `<span style="color:var(--accent-amber);font-weight:600;font-size:14px;">${total.toFixed(1)}</span>` : '<span style="color:var(--text-muted);">—</span>'}</td>
-                ${cats.map(cat => `<td style="text-align:center;">${catAvg[cat] != null ? catAvg[cat].toFixed(1) : '<span style="color:var(--text-muted);">—</span>'}</td>`).join('')}
-                <td style="text-align:center;color:var(--text-secondary);">${rc || '—'}</td>
-              </tr>`;
-          }).join('')}
-          </tbody>
-        </table>
+      <div style="background:var(--bg-surface);border:0.5px solid var(--border-soft);border-radius:12px;overflow:hidden;">
+        ${state.contractors.map((c, i) => listRow(c, i, state.contractors.length)).join('')}
       </div>
     `}
   `;
@@ -409,47 +383,66 @@ function renderList() {
     render();
     toast('最新データに更新しました');
   });
-  document.querySelectorAll('tr.tr-click').forEach(r => r.addEventListener('click', () => {
+  document.querySelectorAll('.list-row').forEach(r => r.addEventListener('click', () => {
     currentContractorId = r.dataset.id;
+    backTarget = 'list';
     currentView = 'detail';
     render();
   }));
+}
+
+function listRow(c, i, total) {
+  const avg = avgScore(c.id);
+  const rc = reviewCount(c.id);
+  const isLast = i === total - 1;
+  return `
+    <div class="list-row" data-id="${c.id}" style="padding:14px 16px;${isLast?'':'border-bottom:0.5px solid rgba(29,158,117,0.15);'}cursor:pointer;transition:background 0.15s;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+        <span style="font-size:16px;font-weight:600;color:var(--text-primary);">${esc(c.name)}</span>
+        ${c.hasLicense ? '<span class="chip l">許可</span>' : ''}
+        ${c.workTypes.length ? `<span style="font-size:12px;color:#afa9ec;">▸ ${c.workTypes.map(esc).join(' / ')}</span>` : ''}
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-secondary);flex-wrap:wrap;">
+        ${avg!=null ? `<span style="color:var(--accent-amber);font-weight:600;">★ ${avg.toFixed(1)}</span><span>(${rc}件)</span>` : '<span style="opacity:0.7;">評価なし</span>'}
+        <span style="opacity:0.4;">|</span>
+        <span><i class="ti ti-map-pin"></i> ${esc(c.address || '住所未登録')}</span>
+      </div>
+    </div>`;
 }
 
 function renderSearch() {
   const v = document.getElementById('main-view');
   v.innerHTML = `
     <div class="card">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-        <i class="ti ti-search" style="font-size:18px;color:var(--neon);"></i>
-        <div style="font-size:15px;font-weight:500;">業者検索</div>
-        <span style="font-size:10px;color:var(--text-secondary);background:var(--bg-card);padding:3px 8px;border-radius:999px;">ALL AND</span>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <i class="ti ti-search" style="font-size:20px;color:var(--neon);"></i>
+        <div style="font-size:17px;font-weight:600;">業者検索</div>
+        <span style="font-size:11px;color:var(--text-secondary);background:var(--bg-card);padding:4px 10px;border-radius:999px;">ALL AND</span>
       </div>
-      <div class="filter-grid">
-        <div class="field-row"><div class="field-label"><i class="ti ti-building"></i>会社名 (あいまい)</div><input type="text" id="f-name" value="${esc(searchFilters.name)}" placeholder="例: 山田" /></div>
-        <div class="field-row"><div class="field-label"><i class="ti ti-user"></i>窓口担当者名 (あいまい)</div><input type="text" id="f-contact" value="${esc(searchFilters.contact)}" placeholder="例: 佐藤" /></div>
-        <div class="field-row"><div class="field-label"><i class="ti ti-map-pin"></i>住所 (あいまい)</div><input type="text" id="f-address" value="${esc(searchFilters.address)}" placeholder="例: 渋谷" /></div>
-        <div class="field-row"><div class="field-label"><i class="ti ti-certificate"></i>建設業許可証</div>
-          <label style="display:inline-flex;align-items:center;gap:8px;font-size:13px;padding-top:7px;cursor:pointer;">
-            <input type="checkbox" id="f-license" ${searchFilters.hasLicense ? 'checked' : ''} /><span>許可証ありのみ表示</span>
-          </label>
-        </div>
+      <div class="field-row" style="margin-bottom:18px;">
+        <div class="field-label" style="font-size:13px;"><i class="ti ti-search"></i>フリーワード検索 <span style="color:var(--text-muted);font-weight:400;">(会社名・担当者・住所を同時検索)</span></div>
+        <input type="text" id="f-freetext" value="${esc(searchFilters.freeText)}" placeholder="例: 山田 / 佐藤 / 渋谷" />
       </div>
-      <div class="field-row"><div class="field-label"><i class="ti ti-award"></i>保持資格 (複数選択でAND)</div>
+      <div class="field-row" style="margin-bottom:18px;">
+        <label style="display:inline-flex;align-items:center;gap:10px;font-size:15px;cursor:pointer;">
+          <input type="checkbox" id="f-license" ${searchFilters.hasLicense ? 'checked' : ''} style="width:18px;height:18px;" /><span>建設業許可証ありのみ表示</span>
+        </label>
+      </div>
+      <div class="field-row" style="margin-bottom:18px;">
+        <div class="field-label" style="font-size:13px;"><i class="ti ti-award"></i>保持資格 <span style="color:var(--text-muted);font-weight:400;">(複数選択でAND)</span></div>
         <div id="f-quals">${state.masters.qualifications.map(q =>
-          `<span class="chip chip-btn ${searchFilters.quals.includes(q) ? 'selected' : 'q'}" data-q="${esc(q)}">${esc(q)}</span>`).join('')}</div>
+          `<span class="chip chip-lg chip-btn ${searchFilters.quals.includes(q) ? 'selected' : 'q'}" data-q="${esc(q)}">${esc(q)}</span>`).join('')}</div>
       </div>
-      <div class="field-row"><div class="field-label"><i class="ti ti-tools"></i>施工可能工事種目 (複数選択でAND)</div>
+      <div class="field-row" style="margin-bottom:14px;">
+        <div class="field-label" style="font-size:13px;"><i class="ti ti-tools"></i>施工可能工事種目 <span style="color:var(--text-muted);font-weight:400;">(複数選択でAND)</span></div>
         <div id="f-works">${state.masters.workTypes.map(w =>
-          `<span class="chip chip-btn ${searchFilters.works.includes(w) ? 'selected' : 'w'}" data-w="${esc(w)}">${esc(w)}</span>`).join('')}</div>
+          `<span class="chip chip-lg chip-btn ${searchFilters.works.includes(w) ? 'selected' : 'w'}" data-w="${esc(w)}">${esc(w)}</span>`).join('')}</div>
       </div>
       <div style="display:flex;gap:6px;margin-top:14px;"><button class="btn btn-ghost" id="btn-clear-search"><i class="ti ti-refresh"></i>条件をクリア</button></div>
     </div>
     <div id="search-results" style="margin-top:14px;"></div>
   `;
-  document.getElementById('f-name').addEventListener('input', e => { searchFilters.name = e.target.value; doSearch(); });
-  document.getElementById('f-contact').addEventListener('input', e => { searchFilters.contact = e.target.value; doSearch(); });
-  document.getElementById('f-address').addEventListener('input', e => { searchFilters.address = e.target.value; doSearch(); });
+  document.getElementById('f-freetext').addEventListener('input', e => { searchFilters.freeText = e.target.value; doSearch(); });
   document.getElementById('f-license').addEventListener('change', e => { searchFilters.hasLicense = e.target.checked; doSearch(); });
   document.querySelectorAll('#f-quals .chip-btn').forEach(c => c.addEventListener('click', () => {
     const q = c.dataset.q;
@@ -464,7 +457,7 @@ function renderSearch() {
     renderSearch();
   }));
   document.getElementById('btn-clear-search').addEventListener('click', () => {
-    searchFilters = { name: '', contact: '', address: '', hasLicense: false, quals: [], works: [] };
+    searchFilters = { freeText: '', hasLicense: false, quals: [], works: [] };
     renderSearch();
   });
   doSearch();
@@ -472,10 +465,14 @@ function renderSearch() {
 
 function doSearch() {
   const f = searchFilters;
+  const ft = (f.freeText || '').toLowerCase().trim();
   const results = state.contractors.filter(c => {
-    if (f.name && !c.name.toLowerCase().includes(f.name.toLowerCase())) return false;
-    if (f.contact && !c.contacts.some(ct => (ct.name || '').toLowerCase().includes(f.contact.toLowerCase()))) return false;
-    if (f.address && !(c.address || '').toLowerCase().includes(f.address.toLowerCase())) return false;
+    if (ft) {
+      const inName = c.name.toLowerCase().includes(ft);
+      const inContact = c.contacts.some(ct => (ct.name || '').toLowerCase().includes(ft));
+      const inAddress = (c.address || '').toLowerCase().includes(ft);
+      if (!inName && !inContact && !inAddress) return false;
+    }
     if (f.hasLicense && !c.hasLicense) return false;
     if (f.quals.length && !f.quals.every(q => c.qualifications.includes(q))) return false;
     if (f.works.length && !f.works.every(w => c.workTypes.includes(w))) return false;
@@ -483,12 +480,12 @@ function doSearch() {
   });
   const r = document.getElementById('search-results');
   if (!r) return;
-  const ac = [f.name, f.contact, f.address, f.hasLicense, ...f.quals, ...f.works].filter(Boolean).length;
+  const ac = [f.freeText, f.hasLicense, ...f.quals, ...f.works].filter(Boolean).length;
   if (!results.length) {
     r.innerHTML = `<div class="empty-state"><i class="ti ti-mood-empty"></i>該当する業者が見つかりませんでした</div>`;
     return;
   }
-  r.innerHTML = `<div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px;display:flex;justify-content:space-between;padding:0 4px;">
+  r.innerHTML = `<div style="font-size:12px;color:var(--text-secondary);margin-bottom:10px;display:flex;justify-content:space-between;padding:0 4px;">
     <span><i class="ti ti-filter"></i> ${results.length}件 / ${state.contractors.length}件</span><span>${ac}個の条件適用中</span></div>
     ${results.map((c, i) => contractorRowCard(c, i)).join('')}`;
   bindRowClicks();
@@ -496,25 +493,27 @@ function doSearch() {
 
 function contractorRowCard(c, i) {
   const a = avgScore(c.id), rc = reviewCount(c.id);
-  const av = i % 3 === 0 ? '' : (i % 3 === 1 ? 'alt' : 'alt2');
-  return `<div class="row-card" data-id="${c.id}">
-    <div class="avatar ${av}">${esc(initials(c.name))}</div>
+  return `<div class="row-card" data-id="${c.id}" style="padding:14px 16px;">
     <div style="flex:1;min-width:0;">
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <span style="font-weight:500;font-size:14px;">${esc(c.name)}</span>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+        <span style="font-weight:600;font-size:16px;color:var(--text-primary);">${esc(c.name)}</span>
         ${c.hasLicense ? '<span class="chip l">許可</span>' : ''}
-        ${a != null ? `<span style="font-size:12px;color:var(--accent-amber);font-weight:600;">★ ${a.toFixed(1)} <span style="color:var(--text-secondary);font-weight:400;">(${rc})</span></span>` : '<span style="font-size:10px;color:var(--text-secondary);">評価なし</span>'}
+        ${c.workTypes.length ? `<span style="font-size:12px;color:#afa9ec;">▸ ${c.workTypes.map(esc).join(' / ')}</span>` : ''}
       </div>
-      <div style="font-size:11px;color:var(--text-secondary);margin-top:3px;"><i class="ti ti-map-pin"></i> ${esc(c.address || '')}</div>
-      <div style="margin-top:4px;">${c.workTypes.slice(0, 4).map(w => `<span class="chip w">${esc(w)}</span>`).join('')}${c.workTypes.length > 4 ? `<span class="chip">+${c.workTypes.length - 4}</span>` : ''}</div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-secondary);flex-wrap:wrap;">
+        ${a != null ? `<span style="color:var(--accent-amber);font-weight:600;">★ ${a.toFixed(1)}</span><span>(${rc}件)</span>` : '<span style="opacity:0.7;">評価なし</span>'}
+        <span style="opacity:0.4;">|</span>
+        <span><i class="ti ti-map-pin"></i> ${esc(c.address || '住所未登録')}</span>
+      </div>
     </div>
-    <i class="ti ti-chevron-right" style="color:var(--text-secondary);"></i>
+    <i class="ti ti-chevron-right" style="color:var(--text-secondary);margin-left:8px;"></i>
   </div>`;
 }
 
 function bindRowClicks() {
   document.querySelectorAll('.row-card').forEach(r => r.addEventListener('click', () => {
     currentContractorId = r.dataset.id;
+    backTarget = 'search';
     currentView = 'detail';
     render();
   }));
@@ -532,9 +531,8 @@ function renderDetail() {
     <div style="margin-bottom:12px;"><button class="btn btn-ghost" id="btn-back"><i class="ti ti-arrow-left"></i>戻る</button></div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start;">
-        <div style="display:flex;gap:14px;align-items:center;">
-          <div class="avatar" style="width:56px;height:56px;font-size:18px;border-radius:14px;">${esc(initials(c.name))}</div>
-          <div><div style="font-size:18px;font-weight:600;">${esc(c.name)}</div>
+        <div style="display:flex;gap:14px;align-items:center;flex:1;min-width:0;">
+          <div><div style="font-size:20px;font-weight:600;">${esc(c.name)}</div>
             <div style="font-size:12px;color:var(--text-secondary);margin-top:3px;"><i class="ti ti-map-pin"></i> ${esc(c.address || '住所未登録')}</div>
             <div style="margin-top:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
               ${c.hasLicense ? '<span class="chip l"><i class="ti ti-circle-check"></i> 建設業許可</span>' : '<span class="chip muted">許可なし</span>'}
@@ -620,7 +618,7 @@ function renderDetail() {
       </div>
     </div>
   `;
-  document.getElementById('btn-back').addEventListener('click', () => { currentView = 'list'; render(); });
+  document.getElementById('btn-back').addEventListener('click', () => { currentView = backTarget; render(); });
   document.getElementById('btn-edit').addEventListener('click', () => {
     editingContractorId = c.id; formData = null; currentView = 'register'; render();
   });
@@ -639,6 +637,7 @@ function renderDetail() {
         await api.deleteContractor(c.id);
         await refreshData();
         hideLoading();
+        backTarget = 'list';
         currentView = 'list';
         render();
         toast('業者を削除しました');
@@ -999,13 +998,15 @@ function renderCSV() {
     </div>
     <div class="card" style="margin-top:12px;">
       <div style="font-size:12px;font-weight:500;margin-bottom:8px;"><i class="ti ti-info-circle" style="color:var(--neon);"></i> CSV フォーマット</div>
-      <div style="font-size:10px;color:var(--text-secondary);font-family:'SF Mono',monospace;background:var(--bg-base);padding:10px;border-radius:7px;line-height:1.7;border:0.5px solid var(--border-soft);">
-        <div style="color:var(--neon);">▶ 業者:</div>
-        会社名,住所,建設業許可,窓口,資格,工事種目,備考<br>
-        <span style="color:var(--text-muted);">※ 窓口: 氏名:役職:電話:メール を | 区切り</span><br>
-        <span style="color:var(--text-muted);">※ 資格・工事種目は ; 区切り / 許可は「有」or「無」</span>
+      <div style="font-size:11px;color:var(--text-secondary);font-family:'SF Mono',monospace;background:var(--bg-base);padding:10px;border-radius:7px;line-height:1.7;border:0.5px solid var(--border-soft);">
+        <div style="color:var(--neon);">▶ 業者 (Excelテンプレート用):</div>
+        会社名, 住所, 建設業許可, 窓口1_氏名, 窓口1_役職, 窓口1_電話, 窓口1_メール,<br>
+        窓口2_氏名, 窓口2_役職, 窓口2_電話, 窓口2_メール, ..., 資格, 工事種目, 備考<br>
+        <span style="color:var(--text-muted);">※ 窓口は最大3名分の列を用意。それ以上は4人目以降の列を追加</span><br>
+        <span style="color:var(--text-muted);">※ 資格・工事種目は「;」(セミコロン) 区切りで複数入力</span><br>
+        <span style="color:var(--text-muted);">※ 許可は「有」または「無」</span>
         <div style="color:var(--neon);margin-top:10px;">▶ 評価:</div>
-        会社名,現場名,評価者,日付,予算感,事前対応の早さ,施工技術,現場での対応力,コメント
+        会社名, 現場名, 評価者, 日付, 予算感, 事前対応の早さ, 施工技術, 現場での対応力, コメント
       </div>
     </div>`;
   document.querySelectorAll('[data-export]').forEach(b => b.addEventListener('click', () => doExport(b.dataset.export)));
@@ -1024,10 +1025,23 @@ function csvEsc(v) { v = String(v == null ? '' : v); return /[",\n]/.test(v) ? '
 function buildCSV(type) {
   let csv = '';
   if (type === 'contractors') {
-    csv = '会社名,住所,建設業許可,窓口,資格,工事種目,備考\n';
+    // 最大窓口数を確認 (最低3、それ以上ある場合は実数)
+    let maxContacts = 3;
+    state.contractors.forEach(c => { if (c.contacts.length > maxContacts) maxContacts = c.contacts.length; });
+    const header = ['会社名', '住所', '建設業許可'];
+    for (let i = 1; i <= maxContacts; i++) {
+      header.push(`窓口${i}_氏名`, `窓口${i}_役職`, `窓口${i}_電話`, `窓口${i}_メール`);
+    }
+    header.push('資格', '工事種目', '備考');
+    csv = header.join(',') + '\n';
     state.contractors.forEach(c => {
-      const ct = c.contacts.map(x => `${x.name}:${x.role || ''}:${x.phone}:${x.email || ''}`).join('|');
-      csv += [c.name, c.address, c.hasLicense ? '有' : '無', ct, c.qualifications.join(';'), c.workTypes.join(';'), c.note || ''].map(csvEsc).join(',') + '\n';
+      const row = [c.name, c.address, c.hasLicense ? '有' : '無'];
+      for (let i = 0; i < maxContacts; i++) {
+        const ct = c.contacts[i] || { name: '', role: '', phone: '', email: '' };
+        row.push(ct.name || '', ct.role || '', ct.phone || '', ct.email || '');
+      }
+      row.push(c.qualifications.join(';'), c.workTypes.join(';'), c.note || '');
+      csv += row.map(csvEsc).join(',') + '\n';
     });
   } else if (type === 'reviews') {
     csv = '会社名,現場名,評価者,日付,' + state.masters.evaluationCategories.join(',') + ',コメント\n';
@@ -1098,19 +1112,50 @@ async function doImport() {
   rows.shift();
   const items = [];
   if (type === 'contractors') {
+    // ヘッダー行から窓口列の構成を判定
+    const headerRow = parseCSV(text)[0] || [];
+    const isNewFormat = headerRow.some(h => /窓口\d+_氏名/.test(h));
     rows.forEach(r => {
       if (!r[0]) return;
-      const contacts = (r[3] || '').split('|').filter(Boolean).map(s => {
-        const p = s.split(':');
-        return { name: p[0] || '', role: p[1] || '', phone: p[2] || '', email: p[3] || '' };
-      });
-      items.push({
-        name: r[0], address: r[1] || '', hasLicense: (r[2] || '').includes('有'),
-        contacts: contacts.length ? contacts : [{ name: '', role: '', phone: '', email: '' }],
-        qualifications: (r[4] || '').split(';').filter(Boolean),
-        workTypes: (r[5] || '').split(';').filter(Boolean),
-        note: r[6] || ''
-      });
+      let contacts = [];
+      if (isNewFormat) {
+        // 新形式: 窓口1_氏名,窓口1_役職,窓口1_電話,窓口1_メール,窓口2_...
+        // 窓口列の開始位置(列3)から、4列ごとに1窓口
+        let contactStart = 3;
+        // ヘッダーから「資格」の位置を探す = 窓口列の終わり
+        const headerCols = headerRow;
+        let qualIdx = headerCols.findIndex(h => h === '資格');
+        if (qualIdx < 0) qualIdx = headerCols.length - 3;
+        const numContacts = Math.floor((qualIdx - contactStart) / 4);
+        for (let i = 0; i < numContacts; i++) {
+          const base = contactStart + i * 4;
+          const name = (r[base] || '').trim();
+          const role = (r[base+1] || '').trim();
+          const phone = (r[base+2] || '').trim();
+          const email = (r[base+3] || '').trim();
+          if (name || phone || email) contacts.push({ name, role, phone, email });
+        }
+        items.push({
+          name: r[0], address: r[1] || '', hasLicense: (r[2] || '').includes('有'),
+          contacts: contacts.length ? contacts : [{ name: '', role: '', phone: '', email: '' }],
+          qualifications: (r[qualIdx] || '').split(';').filter(Boolean),
+          workTypes: (r[qualIdx+1] || '').split(';').filter(Boolean),
+          note: r[qualIdx+2] || ''
+        });
+      } else {
+        // 旧形式: 会社名,住所,建設業許可,窓口(|区切り),資格,工事種目,備考
+        contacts = (r[3] || '').split('|').filter(Boolean).map(s => {
+          const p = s.split(':');
+          return { name: p[0] || '', role: p[1] || '', phone: p[2] || '', email: p[3] || '' };
+        });
+        items.push({
+          name: r[0], address: r[1] || '', hasLicense: (r[2] || '').includes('有'),
+          contacts: contacts.length ? contacts : [{ name: '', role: '', phone: '', email: '' }],
+          qualifications: (r[4] || '').split(';').filter(Boolean),
+          workTypes: (r[5] || '').split(';').filter(Boolean),
+          note: r[6] || ''
+        });
+      }
     });
   } else if (type === 'reviews') {
     rows.forEach(r => {
