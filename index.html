@@ -188,7 +188,7 @@ const api = {
 
 // ============== API設定 ==============
 // ⚠️ ここにGASのウェブアプリURLを設定してください
-const API_URL = 'https://script.google.com/macros/s/AKfycbwm10F9y6JZojJWMoPtrJkdkmZk_YI2zv2xX7w-fJ4CltzMOsbHyDxEmE7XZGCbRL7X7A/exec';
+const API_URL = 'https://script.google.com/macros/s/__PASTE_YOUR_GAS_URL_HERE__/exec';
 
 // JSONPでGETリクエスト (CORS回避)
 function jsonpGet(action) {
@@ -984,12 +984,30 @@ function renderCSV() {
     </div>
     <div class="card">
       <div style="font-size:13px;font-weight:500;margin-bottom:6px;"><i class="ti ti-upload" style="color:var(--neon);"></i> インポート</div>
-      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px;">CSVをスプレッドシートに直接貼り付ける運用も可能です</div>
+      <div style="font-size:11px;color:var(--text-secondary);margin-bottom:10px;">Excelから出力したCSVを取り込みます</div>
       <select id="imp-type" style="margin-bottom:10px;">
         <option value="contractors">業者一覧</option>
         <option value="reviews">評価一覧</option>
       </select>
-      <textarea id="imp-text" rows="6" placeholder="ヘッダー行から貼り付け..."></textarea>
+      <div id="imp-mode-wrap" style="margin-bottom:12px;padding:10px 12px;background:var(--bg-card);border-radius:8px;border:0.5px solid var(--border-soft);">
+        <div style="font-size:11px;color:var(--text-secondary);margin-bottom:8px;letter-spacing:0.5px;"><i class="ti ti-settings"></i> 取り込みモード</div>
+        <label style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;cursor:pointer;font-size:13px;">
+          <input type="radio" name="imp-mode" value="merge-update" checked style="margin-top:3px;flex-shrink:0;">
+          <span><span style="color:var(--neon);font-weight:600;">追加モード (推奨)</span><br>
+          <span style="font-size:11px;color:var(--text-secondary);">既存データは残し、CSVの新規業者を追加。同名は最新版に更新</span></span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;cursor:pointer;font-size:13px;">
+          <input type="radio" name="imp-mode" value="merge-skip" style="margin-top:3px;flex-shrink:0;">
+          <span><span style="color:var(--text-primary);font-weight:600;">追加モード (重複スキップ)</span><br>
+          <span style="font-size:11px;color:var(--text-secondary);">既存データは残し、同名はスキップして新規だけ追加</span></span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;cursor:pointer;font-size:13px;">
+          <input type="radio" name="imp-mode" value="replace" style="margin-top:3px;flex-shrink:0;">
+          <span><span style="color:var(--danger);font-weight:600;">全置換モード ⚠</span><br>
+          <span style="font-size:11px;color:var(--text-secondary);">既存データを全て削除して、CSVの内容で置き換え</span></span>
+        </label>
+      </div>
+      <textarea id="imp-text" rows="6" placeholder="ファイルから読込ボタンでCSVを選択 / または直接貼り付け..."></textarea>
       <div style="display:flex;gap:6px;margin-top:10px;">
         <button class="btn btn-primary" id="imp-do"><i class="ti ti-upload"></i>取り込み実行</button>
         <button class="btn btn-ghost" id="imp-file"><i class="ti ti-file"></i>ファイルから読込</button>
@@ -1170,9 +1188,29 @@ async function doImport() {
       });
     });
   }
+  // 選択されたモードを取得
+  const modeEl = document.querySelector('input[name="imp-mode"]:checked');
+  const mode = modeEl ? modeEl.value : 'merge-update';
+  let modeLabel, modeDesc;
+  if (mode === 'replace') {
+    modeLabel = '全置換モード';
+    modeDesc = '<span style="color:var(--danger);font-weight:600;">⚠ 既存データは全て削除されます</span>';
+  } else if (mode === 'merge-skip') {
+    modeLabel = '追加モード (重複スキップ)';
+    modeDesc = '既存データはそのまま、新規業者のみ追加。同名はスキップします';
+  } else {
+    modeLabel = '追加モード (上書き)';
+    modeDesc = '既存データはそのまま、新規業者を追加。同名は最新版に更新します';
+  }
+  // 評価データは現状mergeImport非対応なので、replaceのみ
+  if (type === 'reviews') {
+    modeLabel = '全置換モード';
+    modeDesc = '<span style="color:var(--accent-amber);">※評価データは追加モード非対応。全置換のみ</span>';
+  }
   showModal(`
     <div style="font-size:15px;font-weight:500;margin-bottom:8px;"><i class="ti ti-alert-triangle" style="color:var(--accent-amber);"></i> 取り込み確認</div>
-    <div style="font-size:12px;color:var(--text-secondary);margin-bottom:14px;">${items.length}件を取り込みます。<br>※既存データは全て置き換わります。続行しますか？</div>
+    <div style="font-size:13px;color:var(--text-primary);margin-bottom:6px;"><strong>${modeLabel}</strong> で ${items.length}件 を取り込みます</div>
+    <div style="font-size:12px;color:var(--text-secondary);margin-bottom:14px;">${modeDesc}</div>
     <div style="display:flex;gap:6px;justify-content:flex-end;">
       <button class="btn btn-ghost" onclick="closeModal()">キャンセル</button>
       <button class="btn btn-primary" id="imp-confirm">取り込む</button>
@@ -1181,12 +1219,24 @@ async function doImport() {
     closeModal();
     showLoading('取り込み中...');
     try {
-      const payload = type === 'contractors' ? { contractors: items } : { reviews: items };
-      await api.replaceAll(payload);
-      await refreshData();
-      hideLoading();
-      render();
-      toast(`${items.length}件取り込みました`);
+      if (type === 'reviews' || mode === 'replace') {
+        // 全置換モード
+        const payload = type === 'contractors' ? { contractors: items } : { reviews: items };
+        await api.replaceAll(payload);
+        await refreshData();
+        hideLoading();
+        render();
+        toast(`${items.length}件取り込みました (全置換)`);
+      } else {
+        // 追加モード (contractorsのみ)
+        const subMode = mode === 'merge-skip' ? 'skip' : 'update';
+        const result = await callGAS('mergeImport', { data: { contractors: items }, mode: subMode });
+        await refreshData();
+        hideLoading();
+        render();
+        const r = result || {};
+        toast(`取り込み完了: 追加${r.added||0}件 / 更新${r.updated||0}件 / スキップ${r.skipped||0}件`);
+      }
       document.getElementById('imp-text') && (document.getElementById('imp-text').value = '');
     } catch (e) { hideLoading(); toast('取り込み失敗: ' + e.message, 'error'); }
   });
