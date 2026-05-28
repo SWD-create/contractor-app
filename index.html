@@ -35,8 +35,9 @@
     padding: calc(env(safe-area-inset-top, 0px) + 8px) 16px 16px 16px;
   }
   .app-container { max-width: 1100px; margin: 0 auto; }
+  .main-spacer { height: 0; }
 
-  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; position: fixed; left: 16px; right: 16px; top: calc(env(safe-area-inset-top, 0px) + 8px); z-index: 50; box-shadow: 0 4px 20px rgba(0,0,0,0.4); will-change: transform; }
   .header-brand { display: flex; align-items: center; gap: 12px; }
   .brand-icon { width: 42px; height: 42px; border-radius: 11px; background: #0f2a30; border: 0.5px solid var(--border-mid); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 18px rgba(93, 202, 165, 0.25); overflow: hidden; }
   .brand-icon svg { display: block; }
@@ -79,7 +80,7 @@
   .section-title::before { content: ""; width: 3px; height: 12px; background: #87D9F5; border-radius: 2px; }
 
   .chip { display: inline-flex; align-items: center; gap: 3px; padding: 5px 12px; border-radius: 999px; font-size: 12px; margin: 2px; border: 0.5px solid transparent; background: var(--bg-card); color: var(--text-secondary); }
-  .chip-lg { padding: 6px 12px; font-size: 12px; margin: 2px; }
+  .chip-lg { padding: 4px 10px; font-size: 11px; margin: 2px; }
   .chip.q { background: rgba(135, 217, 245, 0.12); color: #87D9F5; border-color: rgba(135, 217, 245, 0.3); }
   .chip.w { background: rgba(135, 217, 245, 0.12); color: #87D9F5; border-color: rgba(135, 217, 245, 0.3); }
   .chip.l { background: var(--neon-dim); color: var(--neon); border-color: var(--border-mid); }
@@ -161,6 +162,7 @@
     <div class="nav-tabs" id="nav-tabs"></div>
   </div>
 
+  <div id="header-spacer" style="height: 0;"></div>
   <div id="main-view"></div>
 </div>
 
@@ -1191,6 +1193,7 @@ async function doImport() {
 
 function render() {
   renderNav();
+  setTimeout(adjustHeaderSpacer, 0);
   if (currentView === 'list') renderList();
   else if (currentView === 'search') renderSearch();
   else if (currentView === 'detail') renderDetail();
@@ -1199,7 +1202,48 @@ function render() {
   else if (currentView === 'csv') renderCSV();
 }
 
+// 固定ヘッダーの高さ分だけスペーサーを確保 (PWAでも入力欄が打てるようにsticky不使用)
+function adjustHeaderSpacer() {
+  const header = document.querySelector('.header');
+  const spacer = document.getElementById('header-spacer');
+  if (header && spacer) {
+    const h = header.getBoundingClientRect().height;
+    spacer.style.height = h + 'px';
+  }
+}
+window.addEventListener('resize', adjustHeaderSpacer);
+window.addEventListener('orientationchange', adjustHeaderSpacer);
+
+// iOS PWA対策: 入力欄フォーカス時はヘッダーのfixedを一時解除
+// (fixed/stickyヘッダーがあるとiOS PWAで入力欄のタップ判定がズレるバグ回避)
+function setupInputFocusHandler() {
+  document.addEventListener('focusin', (e) => {
+    const t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) {
+      const header = document.querySelector('.header');
+      if (header) header.style.position = 'static';
+      const spacer = document.getElementById('header-spacer');
+      if (spacer) spacer.style.height = '0px';
+    }
+  });
+  document.addEventListener('focusout', (e) => {
+    const t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) {
+      setTimeout(() => {
+        // 他の入力欄にフォーカス移動していなければ復帰
+        const active = document.activeElement;
+        if (!active || (active.tagName !== 'INPUT' && active.tagName !== 'TEXTAREA' && active.tagName !== 'SELECT')) {
+          const header = document.querySelector('.header');
+          if (header) header.style.position = 'fixed';
+          adjustHeaderSpacer();
+        }
+      }, 100);
+    }
+  });
+}
+
 (async function init() {
+  setupInputFocusHandler();
   showLoading('スプレッドシートに接続中...');
   const ok = await refreshData();
   hideLoading();
