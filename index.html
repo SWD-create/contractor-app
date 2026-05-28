@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>🛠協力業者管理システム</title>
 <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
 <link rel="shortcut icon" type="image/png" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
@@ -10,13 +10,10 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
 <link rel="apple-touch-icon" sizes="192x192" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
 <link rel="apple-touch-icon-precomposed" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="🛠協力業者管理システム">
-<meta name="mobile-web-app-capable" content="yes">
 <meta name="application-name" content="🛠協力業者管理システム">
 <meta name="theme-color" content="#0a1f24">
-<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIuWNlOWKm+alreiAheeuoeeQhuOCt+OCueODhuODoCIsICJzaG9ydF9uYW1lIjogIuWNlOWKm+alreiAhSIsICJkZXNjcmlwdGlvbiI6ICLljZTlipvmpa3ogIXjga7mpJzntKLjg7vnmbvpjLLjg7voqZXkvqHnrqHnkIYiLCAic3RhcnRfdXJsIjogIi4vIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwYTFmMjQiLCAidGhlbWVfY29sb3IiOiAiIzBhMWYyNCIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsICJpY29ucyI6IFt7InNyYyI6ICJodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdGh1bWJuYWlsP2lkPTFBanI5Nk52ZjVBam1jMUdOQmk4NVRZQU5FYXpGU1lMVyZzej13NTEyIiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifSwgeyJzcmMiOiAiaHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL3RodW1ibmFpbD9pZD0xQWpyOTZOdmY1QWptYzFHTkJpODVUWUFORWF6RlNZTFcmc3o9dzUxMiIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55In0sIHsic3JjIjogImh0dHBzOi8vZHJpdmUuZ29vZ2xlLmNvbS90aHVtYm5haWw/aWQ9MUFqcjk2TnZmNUFqbWMxR05CaTg1VFlBTkVhekZTWUxXJnN6PXc1MTIiLCAic2l6ZXMiOiAiMTgweDE4MCIsICJ0eXBlIjogImltYWdlL3BuZyJ9XX0=">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,7 +36,7 @@
   }
   .app-container { max-width: 1100px; margin: 0 auto; }
 
-  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; position: sticky; top: 8px; z-index: 1; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
   .header-brand { display: flex; align-items: center; gap: 12px; }
   .brand-icon { width: 42px; height: 42px; border-radius: 11px; background: #0f2a30; border: 0.5px solid var(--border-mid); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 18px rgba(93, 202, 165, 0.25); overflow: hidden; }
   .brand-icon svg { display: block; }
