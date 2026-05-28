@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <title>🛠協力業者管理システム</title>
 <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
 <link rel="shortcut icon" type="image/png" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
@@ -10,9 +12,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
 <link rel="apple-touch-icon" sizes="192x192" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
 <link rel="apple-touch-icon-precomposed" href="https://drive.google.com/thumbnail?id=1Ajr96Nvf5Ajmc1GNBi85TYANEazFSYLW&sz=w512">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="🛠協力業者管理システム">
-<meta name="application-name" content="🛠協力業者管理システム">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="theme-color" content="#0a1f24">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <style>
@@ -32,11 +32,11 @@
   }
   body {
     background: radial-gradient(ellipse 800px 400px at top, rgba(29, 158, 117, 0.05), transparent), var(--bg-base);
-    padding: 8px 16px 16px 16px;
+    padding: calc(env(safe-area-inset-top, 0px) + 8px) 16px 16px 16px;
   }
   .app-container { max-width: 1100px; margin: 0 auto; }
 
-  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .header { background: var(--bg-surface); border: 0.5px solid var(--border-soft); border-radius: 14px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
   .header-brand { display: flex; align-items: center; gap: 12px; }
   .brand-icon { width: 42px; height: 42px; border-radius: 11px; background: #0f2a30; border: 0.5px solid var(--border-mid); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 18px rgba(93, 202, 165, 0.25); overflow: hidden; }
   .brand-icon svg { display: block; }
