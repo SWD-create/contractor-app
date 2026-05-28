@@ -1218,6 +1218,17 @@ window.addEventListener('orientationchange', adjustHeaderSpacer);
 // iOS PWA対策: 入力欄フォーカス時はヘッダーのfixedを一時解除
 // (fixed/stickyヘッダーがあるとiOS PWAで入力欄のタップ判定がズレるバグ回避)
 function setupInputFocusHandler() {
+  // Enter(改行/完了)キーで1行入力欄のキーボードを閉じる
+  // ※マスタ追加欄(id^="add-")は既存のEnter→追加機能があるので除外
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const t = e.target;
+      if (t && t.tagName === 'INPUT' && !(t.id && t.id.indexOf('add-') === 0)) {
+        e.preventDefault();
+        t.blur();
+      }
+    }
+  });
   document.addEventListener('focusin', (e) => {
     const t = e.target;
     if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) {
