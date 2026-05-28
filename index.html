@@ -1208,7 +1208,8 @@ function adjustHeaderSpacer() {
   const spacer = document.getElementById('header-spacer');
   if (header && spacer) {
     const h = header.getBoundingClientRect().height;
-    spacer.style.height = h + 'px';
+    // ヘッダー高さ + 上部余白(safe-area+8px) + 下マージン14px + 余裕分
+    spacer.style.height = (h + 24) + 'px';
   }
 }
 window.addEventListener('resize', adjustHeaderSpacer);
